@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const HPMAX = 6.0
+const HPMAX = 5.0
 const SPEED = 300
 const dmg = 1
 const KBSPEED = 800

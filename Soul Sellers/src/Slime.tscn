@@ -23,10 +23,11 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 
 [node name="HopDuration" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.2
 one_shot = true
 
 [node name="HopCooldown" type="Timer" parent="."]
+wait_time = 0.6
 one_shot = true
 autostart = true
 

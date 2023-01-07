@@ -6,15 +6,18 @@ signal update_souls(souls)
 
 const SPEED = 300
 const DASHSPEED = 1500
-const DASHFRICTION = 5000
+const DASHFRICTION = 3000
 const HPMAX = 10.0
+const BASEDMG = 3.0
+const BIGDMG = 5.0
 
 var direction : Vector2 = Vector2.ZERO
 var velocity :  Vector2 = Vector2.ZERO
+var dash_pos : Vector2 = Vector2.ZERO
 
 var action = false
 var hp = HPMAX
-var dmg = 3
+var dmg = BASEDMG
 
 var slime_souls = 0
 
@@ -27,13 +30,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if anim_player.current_animation != "dash":
+	if !["dash", "dash_back"].has(anim_player.current_animation):
 		direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction.y = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 		direction = direction.normalized()
 		velocity = direction * SPEED
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * DASHFRICTION)
+		
+		if global_position.distance_to(dash_pos) < 20:
+			end_action()
 	
 	if !anim_player.current_animation == "attack":
 		$Scythe.look_at(get_global_mouse_position())
@@ -41,35 +47,88 @@ func _process(delta):
 	move_and_slide(velocity)
 	
 	if !action:
+		if direction.y > 0:
+			anim_player.play("idle")
+		elif direction.y < 0:
+			anim_player.play("idle_back")
+		if direction.x < 0:
+			$Sprite.flip_h = true
+		elif direction.x > 0:
+			$Sprite.flip_h = false
+		
+		var mouse_dir = (get_global_mouse_position() - global_position).normalized()
+		
 		if Input.is_action_just_pressed("attack") && $AttackCooldown.time_left == 0:
-			action = true
-			$AttackCooldown.start()
-			anim_player.play("attack")
-			var anim = anim_player.get_animation("attack")
-			var track = anim.find_track("Scythe:rotation_degrees")
-			anim.track_set_key_value(track, 0, $Scythe.rotation_degrees - 60)
-			anim.track_set_key_value(track, 1, $Scythe.rotation_degrees + 60)
+			dmg = BASEDMG
+			play_attack_anim("attack")
+		
+		if Input.is_action_just_released("attack"):
+			if $AttackCharge.time_left == 0:
+				dmg = BIGDMG
+				play_attack_anim("big_attack")
+			
+			$AttackCharge.stop()
+			
 		if Input.is_action_just_pressed("secondary_action"):
 			action = true
-			anim_player.play("dash")
-			direction = (get_global_mouse_position() - global_position).normalized()
+			
+			dash_pos = get_global_mouse_position()
+			
+			if mouse_dir.y >= 0:
+				anim_player.play("dash")
+			else:
+				anim_player.play("dash_back")
+			
+			if mouse_dir.x >= 0:
+				$Sprite.flip_h = false
+			else:
+				$Sprite.flip_h = true
+			
+			direction = mouse_dir
 			velocity = direction * DASHSPEED
-	
-	if !anim_player.is_playing():
-		anim_player.play("idle")
 	
 	if hp <= 0:
 		queue_free()
 
 
+func play_attack_anim(anim: String):
+	var mouse_dir = (get_global_mouse_position() - global_position).normalized()
+	
+	action = true
+	$AttackCooldown.start()
+	$AttackCharge.start()
+	
+	if mouse_dir.y >= 0:
+		anim_player.play(anim)
+	else:
+		anim_player.play(anim + "_back")
+	
+	if mouse_dir.x >= 0:
+		$Sprite.flip_h = false
+	else:
+		$Sprite.flip_h = true
+	
+	if mouse_dir.x >= 0 && mouse_dir.y < 0 || mouse_dir.x < 0 && mouse_dir.y >= 0:
+		$Scythe/Sprite.flip_v = true
+	else:
+		$Scythe/Sprite.flip_v = false
+
+
 func end_action():
 	action = false
+	anim_player.play("idle")
+
+
+func end_action_back():
+	action = false
+	anim_player.play("idle_back")
 
 
 func hurt(dmg: int):
-	hp -= dmg
-	$EffectsAnimation.play("hurt")
-	emit_signal("update_health", hp / HPMAX * 100)
+	if !["dash", "dash_back"].has(anim_player.current_animation) and !["hurt"].has($EffectsAnimation.current_animation):
+		hp -= dmg
+		$EffectsAnimation.play("hurt")
+		emit_signal("update_health", hp / HPMAX * 100)
 
 
 func give_soul(type: String):
