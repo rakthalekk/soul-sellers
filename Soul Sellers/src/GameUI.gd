@@ -5,8 +5,10 @@ signal end_round
 
 var next_increment = 50
 
+onready var player : Repear = get_parent().get_node("YSort").get_node("Repear")
+
 func _ready():
-	$Z/SlimeSouls.text = "Slime Souls: 0"
+	$Z/Souls.text = "Slime Souls: 0\nGhost Souls: 0"
 	$Z/Health.value = 100
 
 
@@ -21,8 +23,8 @@ func _on_Repear_update_health(percent):
 	$Z/Health.value = percent
 
 
-func _on_Repear_update_souls(souls):
-	$Z/SlimeSouls.text = "Slime Souls: " + str(souls)
+func _on_Repear_update_souls():
+	$Z/Souls.text = "Slime Souls: " + str(player.slime_souls) + "\nGhost Souls: " + str(player.ghost_souls)
 
 
 func _on_GameTimer_timeout():

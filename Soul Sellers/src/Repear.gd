@@ -2,7 +2,7 @@ class_name Repear
 extends KinematicBody2D
 
 signal update_health(percent)
-signal update_souls(souls)
+signal update_souls
 
 const SPEED = 300
 const DASHSPEED = 1500
@@ -20,6 +20,7 @@ var hp = HPMAX
 var dmg = BASEDMG
 
 var slime_souls = 0
+var ghost_souls = 0
 
 onready var anim_player = $AnimationPlayer
 
@@ -134,7 +135,10 @@ func hurt(dmg: int):
 func give_soul(type: String):
 	if type == "slime":
 		slime_souls += 1
-		emit_signal("update_souls", slime_souls)
+		emit_signal("update_souls")
+	elif type == "ghost":
+		ghost_souls += 1
+		emit_signal("update_souls")
 
 
 func _on_Scythe_body_entered(body):

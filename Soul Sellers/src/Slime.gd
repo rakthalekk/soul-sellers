@@ -1,40 +1,15 @@
-extends KinematicBody2D
+extends Enemy
 
-const HPMAX = 5.0
-const SPEED = 300
-const dmg = 1
-const KBSPEED = 800
-const KBFRICTION = 3000
-
-const SOUL = preload("res://src/SlimeSoul.tscn")
-
-var direction : Vector2 = Vector2.ZERO
-var velocity : Vector2 = Vector2.ZERO
-
-var player : Repear
-var hp = HPMAX
-var knockback = false
-
-# Called when the node enters the scene tree for the first time.
+# Overrides constants
 func _ready():
-	player = get_parent().get_node("Repear")
-	$HealthBar.value = 100
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if knockback:
-		velocity = velocity.move_toward(Vector2.ZERO, delta * KBFRICTION)
-		if velocity.length() == 0:
-			knockback = false
+	HPMAX = 5.0
+	SPEED = 300
+	dmg = 1
+	KBSPEED = 800
+	KBFRICTION = 3000
+	SOUL = preload("res://src/SlimeSoul.tscn")
 	
-	move_and_slide(velocity)
-	
-	if hp <= 0:
-		var soul = SOUL.instance()
-		soul.global_position = global_position
-		get_parent().add_child(soul)
-		queue_free()
+	hp = HPMAX
 
 
 func _on_HopCooldown_timeout():

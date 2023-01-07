@@ -1,6 +1,6 @@
 extends Sprite
 
-const SLIME = preload("res://src/Slime.tscn")
+const GHOST = preload("res://src/Ghost.tscn")
 
 var spawn_rate = 5.0
 
@@ -16,7 +16,7 @@ func increase_spawn_rate():
 
 
 func _on_SpawnRate_timeout():
-	var slime = SLIME.instance()
-	slime.global_position = global_position
-	get_parent().add_child(slime)
+	var ghost = GHOST.instance()
+	ghost.global_position = global_position
+	get_parent().add_child(ghost)
 	$SpawnRate.start(rng.randf_range(spawn_rate - 1, spawn_rate + 3))

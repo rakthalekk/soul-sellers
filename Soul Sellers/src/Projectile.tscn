@@ -1,23 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://src/Soul.gd" type="Script" id=2]
+[ext_resource path="res://src/Projectile.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 7 )
+extents = Vector2( 6, 6 )
 
-[node name="Soul" type="Area2D"]
+[node name="Projectile" type="Area2D"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 script = ExtResource( 2 )
-type = "slime"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.203922, 0.898039, 0.231373, 1 )
+modulate = Color( 0.964706, 0.0313726, 0.0313726, 1 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 
-[connection signal="body_entered" from="." to="." method="_on_Soul_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]

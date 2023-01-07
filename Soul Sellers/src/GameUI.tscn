@@ -10,7 +10,7 @@ script = ExtResource( 2 )
 
 [node name="Z" type="CanvasLayer" parent="."]
 
-[node name="SlimeSouls" type="Label" parent="Z"]
+[node name="Souls" type="Label" parent="Z"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 200.0
