@@ -4,7 +4,7 @@
 [ext_resource path="res://src/SlimeSoul.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
+extents = Vector2( 7, 5.5 )
 
 [node name="SlimeSoul" type="Area2D"]
 collision_layer = 0
@@ -12,11 +12,12 @@ collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.203922, 0.898039, 0.231373, 1 )
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_SlimeSoul_body_entered"]
