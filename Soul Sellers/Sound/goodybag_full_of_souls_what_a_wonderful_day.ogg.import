@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/goodybag_full_of_souls_what_a_wonderful_day.ogg-bb043e73dc8432f888fe51a467844eea.oggstr"
+
+[deps]
+
+source_file="res://Sound/goodybag_full_of_souls_what_a_wonderful_day.ogg"
+dest_files=[ "res://.import/goodybag_full_of_souls_what_a_wonderful_day.ogg-bb043e73dc8432f888fe51a467844eea.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

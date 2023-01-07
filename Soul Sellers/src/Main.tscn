@@ -5,7 +5,7 @@
 [ext_resource path="res://src/SlimeSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Main.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Arena.png" type="Texture" id=5]
-[ext_resource path="res://Sound/goodybag_full_of_souls_what_a_wonderful_day.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Sound/goodybag_full_of_souls_what_a_wonderful_day.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/GhostSpawner.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
