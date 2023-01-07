@@ -1,6 +1,7 @@
 extends Control
 
 signal increase_spawn_rate
+signal end_round
 
 var next_increment = 50
 
@@ -22,3 +23,7 @@ func _on_Repear_update_health(percent):
 
 func _on_Repear_update_souls(souls):
 	$Z/SlimeSouls.text = "Slime Souls: " + str(souls)
+
+
+func _on_GameTimer_timeout():
+	emit_signal("end_round")
