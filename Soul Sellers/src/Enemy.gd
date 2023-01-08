@@ -38,6 +38,13 @@ func _process(delta):
 		queue_free()
 
 
+func flip_sprite():
+	if direction.x >= 0:
+		$Sprite.flip_h = false
+	else:
+		$Sprite.flip_h = true
+
+
 func hurt(dmg: int):
 	hp -= dmg
 	$HealthBar.value = hp / HPMAX * 100

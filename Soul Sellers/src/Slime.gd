@@ -12,26 +12,24 @@ func _ready():
 	hp = HPMAX
 
 
-func _on_HopCooldown_timeout():
-	$HopDuration.start()
+func start_moving():
 	direction = (player.global_position - global_position).normalized()
+	if direction.y > 0:
+		$AnimationPlayer.play("hop")
+	else:
+		$AnimationPlayer.play("hop_back")
+	
+	$AnimationPlayer.seek(0.201)
+	
+	flip_sprite()
+	
 	velocity = direction * SPEED
 
 
-func _on_HopDuration_timeout():
-	$HopCooldown.start()
+func stop_moving():
 	velocity = Vector2.ZERO
 
 
 func _on_Hitbox_body_entered(body):
 	body.hurt(dmg)
 
-
-func hurt(dmg: int):
-	hp -= dmg
-	$HealthBar.value = hp / HPMAX * 100
-	knockback = true
-	$HopDuration.stop()
-	$HopCooldown.start()
-	direction = (global_position - player.global_position).normalized()
-	velocity = direction * KBSPEED

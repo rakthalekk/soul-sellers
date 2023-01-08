@@ -1,10 +1,6 @@
 extends Node2D
 
 
-func _ready():
-	$AudioStreamPlayer.play(162)
-
-
 func _on_GameUI_increase_spawn_rate():
 	for spawner in get_tree().get_nodes_in_group("spawner"):
 		spawner.increase_spawn_rate()

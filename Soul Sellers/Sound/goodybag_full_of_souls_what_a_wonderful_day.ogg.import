@@ -12,4 +12,4 @@ dest_files=[ "res://.import/goodybag_full_of_souls_what_a_wonderful_day.ogg-bb04
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=1.29

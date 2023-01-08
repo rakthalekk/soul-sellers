@@ -16,17 +16,30 @@ func _ready():
 
 func _process(delta):
 	if !knockback:
-		direction = (player.global_position - global_position).normalized()
+		var dist = player.global_position - global_position
+		if dist.length() > 250:
+			direction = dist.normalized()
+		elif dist.length() < 150:
+			direction = -dist.normalized()
+			$ProjectileTimer.stop()
+		else:
+			direction = Vector2.ZERO
+			if $ProjectileTimer.is_stopped():
+				$ProjectileTimer.start()
+		
 		velocity = direction * SPEED
-
-
-func _on_Hitbox_body_entered(body):
-	body.hurt(dmg)
+		
+		flip_sprite()
+		
+		if direction.y >= 0:
+			$AnimationPlayer.play("float")
+		else:
+			$AnimationPlayer.play("float_back")
 
 
 func _on_ProjectileTimer_timeout():
 	if !knockback:
 		var projectile = PROJECTILE.instance()
 		projectile.global_position = global_position
-		projectile.direction = direction
+		projectile.direction = (player.global_position - global_position).normalized()
 		get_parent().add_child(projectile)

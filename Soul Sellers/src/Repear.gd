@@ -5,7 +5,7 @@ signal update_health(percent)
 signal update_souls
 
 const SPEED = 300
-const DASHSPEED = 1500
+const DASHSPEED = 1200
 const DASHFRICTION = 3000
 const HPMAX = 10.0
 const BASEDMG = 3.0
@@ -63,15 +63,17 @@ func _process(delta):
 			dmg = BASEDMG
 			play_attack_anim("attack")
 		
-		if Input.is_action_just_released("attack"):
+		if Input.is_action_just_released("attack") && $AttackCooldown.time_left == 0:
 			if $AttackCharge.time_left == 0:
 				dmg = BIGDMG
 				play_attack_anim("big_attack")
 			
 			$AttackCharge.stop()
 			
-		if Input.is_action_just_pressed("secondary_action"):
+		if Input.is_action_just_pressed("secondary_action") && $ActionCooldown.time_left == 0:
 			action = true
+			$ActionCooldown.start()
+			set_collision_layer_bit(1, false)
 			
 			dash_pos = get_global_mouse_position()
 			
@@ -118,15 +120,17 @@ func play_attack_anim(anim: String):
 func end_action():
 	action = false
 	anim_player.play("idle")
+	set_collision_layer_bit(1, true)
 
 
 func end_action_back():
 	action = false
 	anim_player.play("idle_back")
+	set_collision_layer_bit(1, true)
 
 
 func hurt(dmg: int):
-	if !["dash", "dash_back"].has(anim_player.current_animation) and !["hurt"].has($EffectsAnimation.current_animation):
+	if !["hurt"].has($EffectsAnimation.current_animation):
 		hp -= dmg
 		$EffectsAnimation.play("hurt")
 		emit_signal("update_health", hp / HPMAX * 100)

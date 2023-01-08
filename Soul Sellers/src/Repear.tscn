@@ -964,4 +964,7 @@ one_shot = true
 [node name="AttackCharge" type="Timer" parent="."]
 one_shot = true
 
+[node name="ActionCooldown" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Scythe" to="." method="_on_Scythe_body_entered"]
