@@ -30,6 +30,10 @@ config/name="Soul Sellers"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://src/Global.gd"
+
 [display]
 
 window/size/width=1200

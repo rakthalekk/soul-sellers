@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Health Bar (empty).png" type="Texture" id=1]
 [ext_resource path="res://src/GameUI.gd" type="Script" id=2]
@@ -6,10 +6,9 @@
 [ext_resource path="res://Assets/Health Bar (skull).png" type="Texture" id=4]
 [ext_resource path="res://Assets/Health Bar (full).png" type="Texture" id=5]
 [ext_resource path="res://Assets/Stopwatch.png" type="Texture" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 3 )
+[ext_resource path="res://Assets/Slime Soul Icon.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Ghost Soul Icon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Zombie Soul Icon.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -57,6 +56,10 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 3 )
+
 [node name="GameUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,21 +67,11 @@ script = ExtResource( 2 )
 
 [node name="Z" type="CanvasLayer" parent="."]
 
-[node name="Souls" type="Label" parent="Z"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -108.0
-margin_right = 438.0
-custom_colors/font_color = Color( 0.145098, 0.156863, 0.745098, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Slime souls: 000"
-
 [node name="Health" type="TextureProgress" parent="Z"]
 margin_left = 70.0
-margin_top = 20.0
-margin_right = 83.0
-margin_bottom = 28.0
+margin_top = 610.0
+margin_right = 128.0
+margin_bottom = 699.0
 rect_scale = Vector2( 3, 3 )
 value = 50.0
 texture_under = ExtResource( 1 )
@@ -89,7 +82,7 @@ position = Vector2( -10.3333, 9 )
 texture = ExtResource( 4 )
 
 [node name="Stopwatch" type="Sprite" parent="Z"]
-position = Vector2( 1134, 67 )
+position = Vector2( 1152, 618 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 6 )
 hframes = 12
@@ -98,6 +91,45 @@ hframes = 12
 autoplay = "time"
 anims/RESET = SubResource( 2 )
 anims/time = SubResource( 3 )
+
+[node name="SlimeCount" type="Label" parent="Z"]
+margin_left = 300.0
+margin_top = 625.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "000"
+
+[node name="Sprite" type="Sprite" parent="Z/SlimeCount"]
+position = Vector2( -25, 10 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="GhostCount" type="Label" parent="Z"]
+margin_left = 450.0
+margin_top = 625.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "000"
+
+[node name="Sprite" type="Sprite" parent="Z/GhostCount"]
+position = Vector2( -25, 10 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
+
+[node name="ZombieCount" type="Label" parent="Z"]
+margin_left = 600.0
+margin_top = 625.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "000"
+
+[node name="Sprite" type="Sprite" parent="Z/ZombieCount"]
+position = Vector2( -25, 10 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 60.0

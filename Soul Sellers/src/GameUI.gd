@@ -8,7 +8,9 @@ var next_increment = 50
 onready var player : Repear = get_parent().get_node("YSort").get_node("Repear")
 
 func _ready():
-	$Z/Souls.text = "Slime Souls: 0\nGhost Souls: 0"
+	$Z/SlimeCount.text = str(Global.slime_souls)
+	$Z/GhostCount.text = str(Global.ghost_souls)
+	$Z/ZombieCount.text = str(Global.zombie_souls)
 	$Z/Health.value = 100
 
 
@@ -27,4 +29,7 @@ func _on_Repear_update_health(percent):
 
 
 func _on_Repear_update_souls():
-	$Z/Souls.text = "Slime Souls: " + str(player.slime_souls) + "\nGhost Souls: " + str(player.ghost_souls)
+	#$Z/Souls.text = "Slime Souls: " + str(player.slime_souls) + "\nGhost Souls: " + str(player.ghost_souls)
+	$Z/SlimeCount.text = str(Global.slime_souls)
+	$Z/GhostCount.text = str(Global.ghost_souls)
+	$Z/ZombieCount.text = str(Global.zombie_souls)

@@ -19,9 +19,6 @@ var action = false
 var hp = HPMAX
 var dmg = BASEDMG
 
-var slime_souls = 0
-var ghost_souls = 0
-
 onready var anim_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -138,10 +135,10 @@ func hurt(dmg: int):
 
 func give_soul(type: String):
 	if type == "slime":
-		slime_souls += 1
+		Global.slime_souls += 1
 		emit_signal("update_souls")
 	elif type == "ghost":
-		ghost_souls += 1
+		Global.ghost_souls += 1
 		emit_signal("update_souls")
 
 
