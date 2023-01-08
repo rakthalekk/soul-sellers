@@ -13,10 +13,13 @@ func _ready():
 
 
 func _process(delta):
-	$Z/TimeLeft.text = "Time Left: " + str(round($GameTimer.time_left))
 	if $GameTimer.time_left < next_increment:
 		next_increment -= 10
 		emit_signal("increase_spawn_rate")
+
+
+func enter_night():
+	get_parent().tint()
 
 
 func _on_Repear_update_health(percent):
@@ -25,7 +28,3 @@ func _on_Repear_update_health(percent):
 
 func _on_Repear_update_souls():
 	$Z/Souls.text = "Slime Souls: " + str(player.slime_souls) + "\nGhost Souls: " + str(player.ghost_souls)
-
-
-func _on_GameTimer_timeout():
-	emit_signal("end_round")

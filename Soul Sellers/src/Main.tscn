@@ -1,12 +1,81 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/SlimeSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Main.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Arena.png" type="Texture" id=5]
-[ext_resource path="res://Sound/goodybag_full_of_souls_what_a_wonderful_day.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sound/BeepBox-Song.mp3" type="AudioStream" id=6]
 [ext_resource path="res://src/GhostSpawner.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasModulate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "tint"
+length = 12.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.505882, 0.388235, 0.87451, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasModulate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 12.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "increase_spawn_rates"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 560, 71 )
@@ -64,6 +133,14 @@ tracks/1/keys = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 6 )
+anims/tint = SubResource( 7 )
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
 

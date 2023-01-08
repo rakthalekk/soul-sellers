@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	if !knockback:
-		var dist = player.global_position - global_position
+		var dist = player.global_pdddddosition - global_position
 		if dist.length() > 250:
 			direction = dist.normalized()
 		elif dist.length() < 150:

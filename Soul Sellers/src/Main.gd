@@ -15,3 +15,12 @@ func _on_GameUI_end_round():
 func change_to_shop():
 	get_tree().paused = false
 	get_tree().change_scene("res://src/Shop.tscn")
+
+
+func tint():
+	$CanvasModulate/AnimationPlayer.play("tint")
+
+
+func increase_spawn_rates():
+	for spawner in get_tree().get_nodes_in_group("spawner"):
+		spawner.max_spawn_rate()
