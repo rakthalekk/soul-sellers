@@ -24,3 +24,7 @@ func tint():
 func increase_spawn_rates():
 	for spawner in get_tree().get_nodes_in_group("spawner"):
 		spawner.max_spawn_rate()
+
+
+func _on_Gate_body_entered(body):
+	change_to_shop()
