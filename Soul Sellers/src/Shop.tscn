@@ -102,7 +102,6 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="SpeechBubble"]
 position = Vector2( 108.261, 45.3997 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
