@@ -1,6 +1,7 @@
 extends Node2D
 
 signal start_quest
+signal questing_done
 
 onready var moneyText = $MarketUI/MoneyText
 onready var slimeSoulText = $MarketUI/SlimeSoulText
@@ -10,8 +11,17 @@ onready var vampireSoulText = $MarketUI/VampireSoulText
 onready var reaperSoulText = $MarketUI/ReaperSoulText
 onready var animationPlayer = $AnimationPlayer
 
+var its_dialogue_time = false
+
 func _ready():
 	update_soul_counts()
+
+func _process(delta):
+	if Input.is_action_just_pressed("attack") and its_dialogue_time:
+		its_dialogue_time = false
+		animationPlayer.play_backwards("move_offscreen")
+		update_soul_counts()
+		emit_signal("questing_done")
 
 func update_soul_counts():
 	update_money_count()
@@ -36,6 +46,7 @@ func sell_souls():
 func _on_Quest_Button_pressed():
 	animationPlayer.play("move_offscreen")
 	emit_signal("start_quest")
+	its_dialogue_time = true
 
 func _on_Sell_Button_pressed():
 	sell_souls()

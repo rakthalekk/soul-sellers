@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/Gate.png" type="Texture" id=8]
 [ext_resource path="res://Sound/Grandfather_Clock_Strike_Sound_Effect.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Exit Button Prompt.png" type="Texture" id=10]
-[ext_resource path="res://src/VampireSpawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/ZombieSpawner.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -333,8 +333,8 @@ position = Vector2( 244, 314 )
 [node name="GhostSpawner" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 611, 190 )
 
-[node name="VampireSpawner" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 932, 328 )
+[node name="ZombieSpawner" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 939, 327 )
 
 [node name="TimeUp" type="Control" parent="."]
 pause_mode = 2
@@ -362,6 +362,7 @@ __meta__ = {
 [node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
+volume_db = -30.0
 autoplay = true
 
 [node name="Bong" type="AudioStreamPlayer" parent="."]
