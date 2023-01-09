@@ -78,9 +78,6 @@ margin_top = -1.20377
 margin_right = 479.225
 margin_bottom = 268.796
 texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SpeechBubble" type="Sprite" parent="."]
 visible = false
@@ -102,6 +99,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="SpeechBubble"]
 position = Vector2( 108.261, 45.3997 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
@@ -110,9 +108,6 @@ playing = true
 margin_right = 480.0
 margin_bottom = 48.0
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SpeechBubbleTimer" type="Timer" parent="."]
 wait_time = 0.5

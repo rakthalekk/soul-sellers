@@ -78,3 +78,11 @@ func _on_Coffin_Button_pressed():
 	Global.money_count -= 800
 	Global.coffin_unlock_flag = true
 	update_money_count()
+
+
+func _on_DmgButton_pressed():
+	if Global.money_count < 400 or Global.dmg_up_flag:
+		return
+	Global.money_count -= 400
+	Global.dmg_up_flag = true
+	update_money_count()

@@ -9,8 +9,8 @@ const SPEED = 300
 const DASHSPEED = 1200
 const DASHFRICTION = 3000
 const HPMAX = 10.0
-const BASEDMG = 3.0
-const BIGDMG = 5.0
+var BASEDMG = 3.0
+var BIGDMG = 5.0
 
 var direction : Vector2 = Vector2.ZERO
 var velocity :  Vector2 = Vector2.ZERO
@@ -25,7 +25,10 @@ onready var anim_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if Global.dmg_up_flag:
+		BASEDMG = 5.0
+		BIGDMG = 8.0
+		dmg = BASEDMG
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

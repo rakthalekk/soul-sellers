@@ -56,8 +56,8 @@ margin_left = 11.0582
 margin_top = -52.5499
 margin_right = 42.0582
 margin_bottom = -44.5499
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,8 +68,8 @@ margin_left = 10.7933
 margin_top = -33.7444
 margin_right = 41.7933
 margin_bottom = -25.7444
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,8 +80,8 @@ margin_left = 10.5284
 margin_top = -13.6765
 margin_right = 41.5284
 margin_bottom = -5.67653
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,8 +92,8 @@ margin_left = 10.9744
 margin_top = 6.09403
 margin_right = 41.9744
 margin_bottom = 14.094
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,8 +104,8 @@ margin_left = 10.8257
 margin_top = 27.6484
 margin_right = 41.8257
 margin_bottom = 35.6484
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,8 +116,8 @@ margin_left = 10.6771
 margin_top = 47.7163
 margin_right = 41.6771
 margin_bottom = 55.7163
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -149,46 +149,50 @@ __meta__ = {
 position = Vector2( 40.5492, 35.4311 )
 texture = ExtResource( 2 )
 
-[node name="Grave Button" type="TextureButton" parent="Upgrade Panel"]
-margin_left = -40.7448
-margin_top = -28.0874
-margin_right = -4.74484
-margin_bottom = 7.91255
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Void Button" type="TextureButton" parent="Upgrade Panel"]
-margin_left = 54.809
-margin_top = -28.3365
-margin_right = 90.809
-margin_bottom = 7.66347
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Coffin Button" type="TextureButton" parent="Upgrade Panel"]
-margin_left = 6.84744
-margin_top = -27.9726
-margin_right = 42.8474
-margin_bottom = 8.02742
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Homing Souls" type="TextureButton" parent="Upgrade Panel"]
-margin_left = -89.1329
-margin_top = -27.7301
-margin_right = -53.1329
-margin_bottom = 8.26985
+margin_left = -94.4712
+margin_top = -25.1641
+margin_right = -58.4712
+margin_bottom = 10.8359
+rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 11 )
+
+[node name="Grave Button" type="TextureButton" parent="Upgrade Panel"]
+margin_left = -54.4712
+margin_top = -25.1641
+margin_right = -9.21603
+margin_bottom = 10.8359
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+
+[node name="DmgButton" type="TextureButton" parent="Upgrade Panel"]
+margin_left = -14.4712
+margin_top = -25.1641
+margin_right = 30.784
+margin_bottom = 10.8359
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+
+[node name="Coffin Button" type="TextureButton" parent="Upgrade Panel"]
+margin_left = 25.5288
+margin_top = -25.1641
+margin_right = 61.5288
+margin_bottom = 10.8359
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 17 )
+
+[node name="Void Button" type="TextureButton" parent="Upgrade Panel"]
+margin_left = 65.5288
+margin_top = -25.1641
+margin_right = 101.529
+margin_bottom = 10.8359
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -202,7 +206,8 @@ anims/move_offscreen = SubResource( 2 )
 
 [connection signal="pressed" from="Quest Button" to="." method="_on_Quest_Button_pressed"]
 [connection signal="pressed" from="Sell Button" to="." method="_on_Sell_Button_pressed"]
-[connection signal="pressed" from="Upgrade Panel/Grave Button" to="." method="_on_Grave_Button_pressed"]
-[connection signal="pressed" from="Upgrade Panel/Void Button" to="." method="_on_Void_Button_pressed"]
-[connection signal="pressed" from="Upgrade Panel/Coffin Button" to="." method="_on_Coffin_Button_pressed"]
 [connection signal="pressed" from="Upgrade Panel/Homing Souls" to="." method="_on_Homing_Souls_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Grave Button" to="." method="_on_Grave_Button_pressed"]
+[connection signal="pressed" from="Upgrade Panel/DmgButton" to="." method="_on_DmgButton_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Coffin Button" to="." method="_on_Coffin_Button_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Void Button" to="." method="_on_Void_Button_pressed"]
