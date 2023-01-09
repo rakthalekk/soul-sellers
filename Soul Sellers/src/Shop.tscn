@@ -45,12 +45,10 @@ __meta__ = {
 
 [node name="Reaper Portrait" type="Sprite" parent="."]
 position = Vector2( 131.167, 170.56 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 
 [node name="Ghost Portrait" type="Sprite" parent="."]
 position = Vector2( 344.749, 171.036 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )
 
 [node name="Swoop" type="TextureRect" parent="."]
