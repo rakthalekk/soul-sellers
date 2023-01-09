@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_vampire_laugh.ogg-755dc985c55282101a2b6c1b046135cc.oggstr"
+
+[deps]
+
+source_file="res://Sound/enemy sounds/vampire sounds/enemy_vampire_laugh.ogg"
+dest_files=[ "res://.import/enemy_vampire_laugh.ogg-755dc985c55282101a2b6c1b046135cc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

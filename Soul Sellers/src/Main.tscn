@@ -8,7 +8,7 @@
 [ext_resource path="res://Sound/crayon_thriller_v2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/GhostSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Gate.png" type="Texture" id=8]
-[ext_resource path="res://Sound/Grandfather_Clock_Strike_Sound_Effect.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Sound/night_clock.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Exit Button Prompt.png" type="Texture" id=10]
 [ext_resource path="res://src/ZombieSpawner.tscn" type="PackedScene" id=12]
 
@@ -355,14 +355,10 @@ anims/RESET = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 6 )
-volume_db = -30.0
 autoplay = true
 
 [node name="Bong" type="AudioStreamPlayer" parent="."]

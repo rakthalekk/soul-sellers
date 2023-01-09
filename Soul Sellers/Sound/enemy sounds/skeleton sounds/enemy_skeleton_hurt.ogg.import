@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_skeleton_hurt.ogg-273203c37fd71e1f82634918b311037f.oggstr"
+
+[deps]
+
+source_file="res://Sound/enemy sounds/skeleton sounds/enemy_skeleton_hurt.ogg"
+dest_files=[ "res://.import/enemy_skeleton_hurt.ogg-273203c37fd71e1f82634918b311037f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

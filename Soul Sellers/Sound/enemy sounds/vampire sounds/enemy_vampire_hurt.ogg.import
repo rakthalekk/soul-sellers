@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_vampire_hurt.ogg-264ff70ca8170f2ec7ec974a3adf8ca6.oggstr"
+
+[deps]
+
+source_file="res://Sound/enemy sounds/vampire sounds/enemy_vampire_hurt.ogg"
+dest_files=[ "res://.import/enemy_vampire_hurt.ogg-264ff70ca8170f2ec7ec974a3adf8ca6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

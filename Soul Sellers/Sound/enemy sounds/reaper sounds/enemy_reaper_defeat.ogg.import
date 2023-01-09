@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_reaper_defeat.ogg-e586d2645a4fe234f8ce40ace9209b26.oggstr"
+
+[deps]
+
+source_file="res://Sound/enemy sounds/reaper sounds/enemy_reaper_defeat.ogg"
+dest_files=[ "res://.import/enemy_reaper_defeat.ogg-e586d2645a4fe234f8ce40ace9209b26.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

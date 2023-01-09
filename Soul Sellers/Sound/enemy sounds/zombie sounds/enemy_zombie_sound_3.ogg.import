@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_zombie_sound_3.ogg-dd6e976b9a883b97758e42f932fd8d24.oggstr"
+
+[deps]
+
+source_file="res://Sound/enemy sounds/zombie sounds/enemy_zombie_sound_3.ogg"
+dest_files=[ "res://.import/enemy_zombie_sound_3.ogg-dd6e976b9a883b97758e42f932fd8d24.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

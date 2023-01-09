@@ -3,7 +3,7 @@ extends Area2D
 var direction = Vector2.ZERO
 
 var SPEED = 200
-var dmg = 2
+var dmg = 1
 
 
 func _ready():

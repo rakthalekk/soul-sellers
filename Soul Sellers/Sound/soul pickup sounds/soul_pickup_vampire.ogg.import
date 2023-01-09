@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/soul_pickup_vampire.ogg-14f345be24e1fdef5e841be97c7c5ace.oggstr"
+
+[deps]
+
+source_file="res://Sound/soul pickup sounds/soul_pickup_vampire.ogg"
+dest_files=[ "res://.import/soul_pickup_vampire.ogg-14f345be24e1fdef5e841be97c7c5ace.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

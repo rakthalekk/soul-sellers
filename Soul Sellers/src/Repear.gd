@@ -65,11 +65,13 @@ func _process(delta):
 		if Input.is_action_just_pressed("attack") && $AttackCooldown.time_left == 0:
 			dmg = BASEDMG
 			play_attack_anim("attack")
+			$AttackSound.play()
 		
 		if Input.is_action_just_released("attack") && $AttackCooldown.time_left == 0:
 			if $AttackCharge.time_left == 0:
 				dmg = BIGDMG
 				play_attack_anim("big_attack")
+				$BigAttackSound.play()
 			
 		if Input.is_action_just_pressed("secondary_action") && $ActionCooldown.time_left == 0:
 			action = true
@@ -96,6 +98,8 @@ func _process(delta):
 	
 	if hp <= 0:
 		emit_signal("die")
+		$Sprite.modulate = Color(1, 0.2, 0.2)
+		$DieSound.play()
 
 
 func play_attack_anim(anim: String):
@@ -159,9 +163,19 @@ func give_soul(type: String):
 	emit_signal("update_souls")
 
 
+func play_pickup_sound(sound):
+	$SoulPickupSound.stream = sound
+	$SoulPickupSound.play()
+
+
 func _on_Scythe_body_entered(body):
 	body.hurt(dmg)
 
 
 func _on_ActionCooldown_timeout():
 	$Scythe/Cursor.modulate = Color(1, 1, 1, 1)
+
+
+func _on_AttackCharge_timeout():
+	if Input.is_action_pressed("attack"):
+		$ChargeAttack.play()

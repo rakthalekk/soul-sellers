@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/enemy_slime_sound_1.ogg-3f20b0ccf6e40b2a56395ffdfc38dc5a.oggstr"
+
+[deps]
+
+source_file="res://Sound/enemy sounds/slime sounds/enemy_slime_sound_1.ogg"
+dest_files=[ "res://.import/enemy_slime_sound_1.ogg-3f20b0ccf6e40b2a56395ffdfc38dc5a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,10 +1,15 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/Attack effect.png" type="Texture" id=1]
 [ext_resource path="res://src/Repear.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Reaper Fella.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Reaper Fella (scythe).png" type="Texture" id=4]
 [ext_resource path="res://Assets/Cursor.png" type="Texture" id=5]
+[ext_resource path="res://Sound/player_attack.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sound/player_big_attack_swing.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sound/player_charged_big_attack.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sound/oops game over.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Sound/soul pickup sounds/soul_pickup_slime.ogg" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 18.5 )
@@ -1045,5 +1050,26 @@ one_shot = true
 [node name="ActionCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="AttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 2.0
+
+[node name="BigAttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 2.0
+
+[node name="ChargeAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 8.0
+
+[node name="DieSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 9 )
+
+[node name="SoulPickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = 4.0
+
 [connection signal="body_entered" from="Scythe" to="." method="_on_Scythe_body_entered"]
+[connection signal="timeout" from="AttackCharge" to="." method="_on_AttackCharge_timeout"]
 [connection signal="timeout" from="ActionCooldown" to="." method="_on_ActionCooldown_timeout"]
