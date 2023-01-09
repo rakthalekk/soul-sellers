@@ -21,8 +21,16 @@ func _process(delta):
 		emit_signal("increase_spawn_rate")
 
 
+func start_night_clock():
+	$Z/AnimationPlayer.play("nighttime")
+
+
 func enter_night():
 	get_parent().tint()
+
+
+func enter_berserk():
+	get_parent().berserk()
 
 
 func _on_Repear_update_health(percent):
