@@ -32,9 +32,7 @@ func _process(delta):
 	move_and_slide(velocity)
 	
 	if hp <= 0:
-		var soul = SOUL.instance()
-		soul.global_position = global_position
-		get_parent().add_child(soul)
+		create_soul()
 		queue_free()
 
 
@@ -43,6 +41,12 @@ func flip_sprite():
 		$Sprite.flip_h = false
 	else:
 		$Sprite.flip_h = true
+
+
+func create_soul():
+	var soul = SOUL.instance()
+	soul.global_position = global_position
+	get_parent().add_child(soul)
 
 
 func hurt(dmg: int):

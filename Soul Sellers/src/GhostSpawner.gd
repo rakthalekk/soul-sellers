@@ -2,7 +2,7 @@ extends Node2D
 
 const GHOST = preload("res://src/Ghost.tscn")
 
-var spawn_rate = 7.0
+var spawn_rate = 8.0
 var maxspawn = false
 
 var rng = RandomNumberGenerator.new()

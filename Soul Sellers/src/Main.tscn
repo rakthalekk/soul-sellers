@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameUI.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Gate.png" type="Texture" id=8]
 [ext_resource path="res://Sound/Grandfather_Clock_Strike_Sound_Effect.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Exit Button Prompt.png" type="Texture" id=10]
+[ext_resource path="res://src/ZombieSpawner.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -286,17 +287,21 @@ position = Vector2( 602, 402 )
 [node name="SlimeSpawner" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 244, 314 )
 
-[node name="SlimeSpawner2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 925, 310 )
-
 [node name="GhostSpawner" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 611, 190 )
+
+[node name="ZombieSpawner" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 939, 327 )
 
 [node name="TimeUp" type="Control" parent="."]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1200, 675 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TimeUp"]
 root_node = NodePath("../..")
@@ -321,7 +326,6 @@ visible = false
 position = Vector2( 600, 26 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [connection signal="end_round" from="GameUI" to="." method="_on_GameUI_end_round"]

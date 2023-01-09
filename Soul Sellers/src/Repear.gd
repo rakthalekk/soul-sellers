@@ -150,10 +150,12 @@ func hurt(dmg: int):
 func give_soul(type: String):
 	if type == "slime":
 		Global.slime_souls += 1
-		emit_signal("update_souls")
 	elif type == "ghost":
 		Global.ghost_souls += 1
-		emit_signal("update_souls")
+	elif type == "zombie":
+		Global.zombie_souls += 1
+	
+	emit_signal("update_souls")
 
 
 func _on_Scythe_body_entered(body):
