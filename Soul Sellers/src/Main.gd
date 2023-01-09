@@ -19,6 +19,7 @@ func change_to_shop():
 
 func tint():
 	$CanvasModulate/AnimationPlayer.play("tint")
+	$Bong.play()
 
 
 func increase_spawn_rates():
@@ -27,4 +28,14 @@ func increase_spawn_rates():
 
 
 func _on_Gate_body_entered(body):
-	change_to_shop()
+	$E.show()
+
+
+func _on_Gate_body_exited(body):
+	$E.hide()
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("exit"):
+		if $Gate.get_overlapping_bodies().size() > 0:
+			_on_GameUI_end_round()

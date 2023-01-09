@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Health Bar (empty).png" type="Texture" id=1]
 [ext_resource path="res://src/GameUI.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Slime Soul Icon.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Ghost Soul Icon.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Zombie Soul Icon.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Vampire Soul Icon.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Reaper Enemy Soul Icon.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -130,6 +132,32 @@ text = "000"
 position = Vector2( -25, 10 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 9 )
+
+[node name="VampireCount" type="Label" parent="Z"]
+margin_left = 750.0
+margin_top = 625.0
+margin_right = 846.0
+margin_bottom = 657.0
+custom_fonts/font = SubResource( 4 )
+text = "000"
+
+[node name="Sprite" type="Sprite" parent="Z/VampireCount"]
+position = Vector2( -25, 10 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 10 )
+
+[node name="ReaperCount" type="Label" parent="Z"]
+margin_left = 900.0
+margin_top = 625.0
+margin_right = 996.0
+margin_bottom = 657.0
+custom_fonts/font = SubResource( 4 )
+text = "000"
+
+[node name="Sprite" type="Sprite" parent="Z/ReaperCount"]
+position = Vector2( -25, 10 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 60.0

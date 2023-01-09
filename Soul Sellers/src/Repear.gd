@@ -14,6 +14,7 @@ const BIGDMG = 5.0
 var direction : Vector2 = Vector2.ZERO
 var velocity :  Vector2 = Vector2.ZERO
 var dash_pos : Vector2 = Vector2.ZERO
+var cursor_pos : Vector2 = Vector2.ZERO
 
 var action = false
 var hp = HPMAX
@@ -39,8 +40,14 @@ func _process(delta):
 		if global_position.distance_to(dash_pos) < 20:
 			end_action()
 	
-	if !anim_player.current_animation == "attack":
-		$Scythe.look_at(get_global_mouse_position())
+	$Scythe.look_at(get_global_mouse_position())
+	
+	if ["dash", "dash_back"].has(anim_player.current_animation):
+		$Scythe/Cursor.global_position = cursor_pos
+	elif get_global_mouse_position().distance_to(global_position) < 200:
+		$Scythe/Cursor.global_position = get_global_mouse_position()
+	else:
+		$Scythe/Cursor.position = Vector2(200, 2)
 	
 	move_and_slide(velocity)
 	
@@ -51,8 +58,10 @@ func _process(delta):
 			anim_player.play("idle_back")
 		if direction.x < 0:
 			$Sprite.flip_h = true
+			$ScytheSprite.flip_h = true
 		elif direction.x > 0:
 			$Sprite.flip_h = false
+			$ScytheSprite.flip_h = false
 		
 		var mouse_dir = (get_global_mouse_position() - global_position).normalized()
 		
@@ -65,14 +74,13 @@ func _process(delta):
 				dmg = BIGDMG
 				play_attack_anim("big_attack")
 			
-			$AttackCharge.stop()
-			
 		if Input.is_action_just_pressed("secondary_action") && $ActionCooldown.time_left == 0:
 			action = true
 			$ActionCooldown.start()
 			set_collision_layer_bit(1, false)
 			
 			dash_pos = get_global_mouse_position()
+			cursor_pos = $Scythe/Cursor.global_position
 			
 			if mouse_dir.y >= 0:
 				anim_player.play("dash")
@@ -81,8 +89,10 @@ func _process(delta):
 			
 			if mouse_dir.x >= 0:
 				$Sprite.flip_h = false
+				$ScytheSprite.flip_h = false
 			else:
 				$Sprite.flip_h = true
+				$ScytheSprite.flip_h = true
 			
 			direction = mouse_dir
 			velocity = direction * DASHSPEED
@@ -99,14 +109,18 @@ func play_attack_anim(anim: String):
 	$AttackCharge.start()
 	
 	if mouse_dir.y >= 0:
-		anim_player.play(anim)
+		$AttackAnimation.play(anim)
+		anim_player.play("idle")
 	else:
-		anim_player.play(anim + "_back")
+		$AttackAnimation.play(anim + "_back")
+		anim_player.play("idle_back")
 	
 	if mouse_dir.x >= 0:
 		$Sprite.flip_h = false
+		$ScytheSprite.flip_h = false
 	else:
 		$Sprite.flip_h = true
+		$ScytheSprite.flip_h = true
 	
 	if mouse_dir.x >= 0 && mouse_dir.y < 0 || mouse_dir.x < 0 && mouse_dir.y >= 0:
 		$Scythe/Sprite.flip_v = true
@@ -144,3 +158,7 @@ func give_soul(type: String):
 
 func _on_Scythe_body_entered(body):
 	body.hurt(dmg)
+
+
+func _on_ActionCooldown_timeout():
+	$Scythe/Cursor.modulate = Color(1, 1, 1, 1)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/crayon_thriller_v2.ogg-1e84179f1321ccfcaa3c8910545f3439.oggstr"
+
+[deps]
+
+source_file="res://Sound/crayon_thriller_v2.ogg"
+dest_files=[ "res://.import/crayon_thriller_v2.ogg-1e84179f1321ccfcaa3c8910545f3439.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=72.6

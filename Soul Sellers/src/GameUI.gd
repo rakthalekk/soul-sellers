@@ -11,6 +11,8 @@ func _ready():
 	$Z/SlimeCount.text = str(Global.slime_souls)
 	$Z/GhostCount.text = str(Global.ghost_souls)
 	$Z/ZombieCount.text = str(Global.zombie_souls)
+	$Z/VampireCount.text = str(Global.vampire_souls)
+	$Z/ReaperCount.text = str(Global.reaper_souls)
 	$Z/Health.value = 100
 
 
@@ -33,3 +35,5 @@ func _on_Repear_update_souls():
 	$Z/SlimeCount.text = str(Global.slime_souls)
 	$Z/GhostCount.text = str(Global.ghost_souls)
 	$Z/ZombieCount.text = str(Global.zombie_souls)
+	$Z/VampireCount.text = str(Global.vampire_souls)
+	$Z/ReaperCount.text = str(Global.reaper_souls)

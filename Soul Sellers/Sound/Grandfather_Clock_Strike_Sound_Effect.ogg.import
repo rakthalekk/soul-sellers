@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Grandfather_Clock_Strike_Sound_Effect.ogg-f32cf54abb3e054f3fadfa5f3835fe09.oggstr"
+
+[deps]
+
+source_file="res://Sound/Grandfather_Clock_Strike_Sound_Effect.ogg"
+dest_files=[ "res://.import/Grandfather_Clock_Strike_Sound_Effect.ogg-f32cf54abb3e054f3fadfa5f3835fe09.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/SlimeSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Main.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Arena.png" type="Texture" id=5]
-[ext_resource path="res://Sound/crayon_thriller.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sound/crayon_thriller_v2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/GhostSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Gate.png" type="Texture" id=8]
+[ext_resource path="res://Sound/Grandfather_Clock_Strike_Sound_Effect.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Exit Button Prompt.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -153,6 +155,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "fade out"
@@ -183,6 +197,34 @@ tracks/1/keys = {
 "method": "change_to_shop"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -30.0 ]
+}
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
@@ -228,7 +270,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Sprite" type="Sprite" parent="Gate"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 hframes = 4
 
@@ -253,22 +294,9 @@ position = Vector2( 611, 190 )
 
 [node name="TimeUp" type="Control" parent="."]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1200, 675 )
-
-[node name="Label" type="Label" parent="TimeUp"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -311.0
-margin_top = -40.5
-margin_right = -203.0
-margin_bottom = -26.5
-rect_scale = Vector2( 6, 6 )
-text = "time's up, gamer"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TimeUp"]
 root_node = NodePath("../..")
@@ -280,12 +308,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 6 )
 autoplay = true
+
+[node name="Bong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="E" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 600, 26 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 11 )
+frame = 1
+playing = true
 
 [connection signal="end_round" from="GameUI" to="." method="_on_GameUI_end_round"]
 [connection signal="increase_spawn_rate" from="GameUI" to="." method="_on_GameUI_increase_spawn_rate"]
 [connection signal="body_entered" from="Gate" to="." method="_on_Gate_body_entered"]
+[connection signal="body_exited" from="Gate" to="." method="_on_Gate_body_exited"]
 [connection signal="update_health" from="YSort/Repear" to="GameUI" method="_on_Repear_update_health"]
 [connection signal="update_souls" from="YSort/Repear" to="GameUI" method="_on_Repear_update_souls"]
