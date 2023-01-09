@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameUI.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Gate.png" type="Texture" id=8]
 [ext_resource path="res://Sound/night_clock.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Exit Button Prompt.png" type="Texture" id=10]
+[ext_resource path="res://src/VampireSpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/ZombieSpawner.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
@@ -63,7 +64,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 resource_name = "dark tint"
 length = 12.6
 step = 0.2
@@ -106,8 +107,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "tint"
+[sub_resource type="Animation" id=3]
 length = 12.6
 step = 0.2
 tracks/0/type = "value"
@@ -173,19 +173,19 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 560, 59 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 560, 39.5 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 20, 339.5 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 18.4, 5.4 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("TimeUp/ColorRect:color")
@@ -212,7 +212,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TimeUp/ColorRect:color")
@@ -253,17 +253,17 @@ tracks/2/keys = {
 "values": [ 0.0, -30.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 10 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "default",
 "speed": 4.0
@@ -278,8 +278,8 @@ visible = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
 root_node = NodePath("../..")
 anims/RESET = SubResource( 1 )
-"anims/dark tint" = SubResource( 12 )
-anims/tint = SubResource( 2 )
+"anims/dark tint" = SubResource( 2 )
+anims/tint = SubResource( 3 )
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
 
@@ -293,19 +293,19 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 600.5, 60 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 600, 640.5 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 20, 340.5 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
 position = Vector2( 1180, 340.5 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Gate" type="Area2D" parent="."]
 position = Vector2( 600, 98 )
@@ -319,7 +319,7 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gate"]
 position = Vector2( 0.400009, 12.4 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 disabled = true
 
 [node name="YSort" type="YSort" parent="."]
@@ -328,13 +328,16 @@ disabled = true
 position = Vector2( 602, 402 )
 
 [node name="SlimeSpawner" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 244, 314 )
+position = Vector2( 236.865, 303.297 )
 
 [node name="GhostSpawner" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 611, 190 )
 
 [node name="ZombieSpawner" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 939, 327 )
+position = Vector2( 955.649, 321.054 )
+
+[node name="VampireSpawner" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 615.414, 539.759 )
 
 [node name="TimeUp" type="Control" parent="."]
 pause_mode = 2
@@ -348,8 +351,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TimeUp"]
 root_node = NodePath("../..")
-anims/RESET = SubResource( 7 )
-"anims/fade out" = SubResource( 8 )
+anims/RESET = SubResource( 8 )
+"anims/fade out" = SubResource( 9 )
 
 [node name="ColorRect" type="ColorRect" parent="TimeUp"]
 anchor_right = 1.0
@@ -368,7 +371,7 @@ stream = ExtResource( 9 )
 visible = false
 position = Vector2( 600, 26 )
 scale = Vector2( 3, 3 )
-frames = SubResource( 11 )
+frames = SubResource( 12 )
 frame = 1
 playing = true
 

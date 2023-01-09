@@ -38,4 +38,6 @@ func spawn():
 
 
 func _on_SpawnRate_timeout():
+	if !Global.grave_unlock_flag:
+		return
 	$AnimationPlayer.play("shake")

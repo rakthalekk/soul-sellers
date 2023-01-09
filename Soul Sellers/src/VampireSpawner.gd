@@ -1,6 +1,6 @@
 extends Node2D
 
-const ZOMBIE = preload("res://src/Vampire.tscn")
+const VAMPIRE = preload("res://src/Vampire.tscn")
 
 var spawn_rate = 16.0
 var nightmode = false
@@ -26,9 +26,9 @@ func max_spawn_rate():
 
 
 func spawn():
-	var zombie = ZOMBIE.instance()
-	zombie.global_position = global_position
-	get_parent().add_child(zombie)
+	var vampire = VAMPIRE.instance()
+	vampire.global_position = global_position
+	get_parent().add_child(vampire)
 	if maxspawn:
 		$SpawnRate.start(6)
 	elif nightmode:
@@ -38,4 +38,6 @@ func spawn():
 
 
 func _on_SpawnRate_timeout():
+	if !Global.coffin_unlock_flag:
+		return
 	$AnimationPlayer.play("shake")

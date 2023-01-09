@@ -48,7 +48,9 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="ZombieSpawner" type="Node2D" groups=["spawner"]]
+[node name="ZombieSpawner" type="Node2D" groups=[
+"spawner",
+]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
