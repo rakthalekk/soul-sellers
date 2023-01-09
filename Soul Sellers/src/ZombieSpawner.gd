@@ -9,6 +9,8 @@ var maxspawn = false
 var rng = RandomNumberGenerator.new()
 
 func _ready():
+	if !Global.grave_unlock_flag:
+		visible = false
 	rng.randomize()
 
 

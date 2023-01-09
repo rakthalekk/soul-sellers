@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/UI/shop stuff/Shop Panel.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/shop stuff/Upgrade Panel.png" type="Texture" id=2]
@@ -14,10 +14,12 @@
 [ext_resource path="res://Assets/UI/shop stuff/Void (unpressed).png" type="Texture" id=12]
 [ext_resource path="res://Assets/UI/shop stuff/Void (pressed).png" type="Texture" id=13]
 [ext_resource path="res://Assets/UI/shop stuff/Grave (unpressed).png" type="Texture" id=14]
-[ext_resource path="res://Assets/UI/shop stuff/Upgrade Costs.png" type="Texture" id=15]
+[ext_resource path="res://Assets/UI/shop stuff/Coin.png" type="Texture" id=15]
 [ext_resource path="res://Assets/UI/shop stuff/Grave (pressed).png" type="Texture" id=16]
 [ext_resource path="res://Assets/UI/shop stuff/Coffin (pressed).png" type="Texture" id=17]
 [ext_resource path="res://Assets/UI/shop stuff/Homing Souls (unpressed).png" type="Texture" id=18]
+[ext_resource path="res://Assets/UI/shop stuff/Attack Up (pressed).png" type="Texture" id=19]
+[ext_resource path="res://Assets/UI/shop stuff/Attack Up (unpressed).png" type="Texture" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -39,6 +41,10 @@ tracks/0/keys = {
 "values": [ Vector2( 236.922, 137.733 ), Vector2( 236.922, 141.733 ), Vector2( 236.922, -50 ) ]
 }
 
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 8 )
+
 [node name="Upgrade Panel" type="Node2D"]
 position = Vector2( 236.922, 137.733 )
 script = ExtResource( 9 )
@@ -56,8 +62,8 @@ margin_left = 11.0582
 margin_top = -52.5499
 margin_right = 42.0582
 margin_bottom = -44.5499
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,8 +74,8 @@ margin_left = 10.7933
 margin_top = -33.7444
 margin_right = 41.7933
 margin_bottom = -25.7444
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,8 +86,8 @@ margin_left = 10.5284
 margin_top = -13.6765
 margin_right = 41.5284
 margin_bottom = -5.67653
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,8 +98,8 @@ margin_left = 10.9744
 margin_top = 6.09403
 margin_right = 41.9744
 margin_bottom = 14.094
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,8 +110,8 @@ margin_left = 10.8257
 margin_top = 27.6484
 margin_right = 41.8257
 margin_bottom = 35.6484
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,8 +122,8 @@ margin_left = 10.6771
 margin_top = 47.7163
 margin_right = 41.6771
 margin_bottom = 55.7163
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -150,13 +156,16 @@ position = Vector2( 40.5492, 35.4311 )
 texture = ExtResource( 2 )
 
 [node name="Homing Souls" type="TextureButton" parent="Upgrade Panel"]
-margin_left = -94.4712
-margin_top = -25.1641
-margin_right = -58.4712
-margin_bottom = 10.8359
+margin_left = -94.0
+margin_top = -25.0
+margin_right = -58.0
+margin_bottom = 11.0
 rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Grave Button" type="TextureButton" parent="Upgrade Panel"]
 margin_left = -54.4712
@@ -173,8 +182,11 @@ margin_top = -25.1641
 margin_right = 30.784
 margin_bottom = 10.8359
 rect_scale = Vector2( 0.8, 0.8 )
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 16 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Coffin Button" type="TextureButton" parent="Upgrade Panel"]
 margin_left = 25.5288
@@ -197,12 +209,90 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Upgrade Costs" type="Sprite" parent="Upgrade Panel"]
-position = Vector2( 5.75418, 23.7698 )
-texture = ExtResource( 15 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/move_offscreen = SubResource( 2 )
+
+[node name="Upgrade Costs" type="Node2D" parent="."]
+
+[node name="Coin" type="Sprite" parent="Upgrade Costs"]
+position = Vector2( -48.3378, 51.8052 )
+texture = ExtResource( 15 )
+
+[node name="Coin2" type="Sprite" parent="Upgrade Costs"]
+position = Vector2( -11.0583, 51.4418 )
+texture = ExtResource( 15 )
+
+[node name="Coin3" type="Sprite" parent="Upgrade Costs"]
+position = Vector2( 29.4739, 51.4307 )
+texture = ExtResource( 15 )
+
+[node name="Coin4" type="Sprite" parent="Upgrade Costs"]
+position = Vector2( 68.9695, 50.8799 )
+texture = ExtResource( 15 )
+
+[node name="Coin5" type="Sprite" parent="Upgrade Costs"]
+position = Vector2( 109.027, 50.4942 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="Upgrade Costs"]
+margin_left = -41.8763
+margin_top = 49.3076
+margin_right = -25.8763
+margin_bottom = 63.3076
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Upgrade Costs"]
+margin_left = -5.7205
+margin_top = 49.3188
+margin_right = 18.2795
+margin_bottom = 63.3188
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "250"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Upgrade Costs"]
+margin_left = 34.0626
+margin_top = 48.5585
+margin_right = 58.0626
+margin_bottom = 62.5585
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "500"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Upgrade Costs"]
+margin_left = 73.3708
+margin_top = 48.7569
+margin_right = 97.3708
+margin_bottom = 62.7569
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "800"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Upgrade Costs"]
+margin_left = 114.376
+margin_top = 48.1728
+margin_right = 145.376
+margin_bottom = 62.1728
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1200"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Quest Button" to="." method="_on_Quest_Button_pressed"]
 [connection signal="pressed" from="Sell Button" to="." method="_on_Sell_Button_pressed"]
