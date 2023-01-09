@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Zombie Soul Icon.png-ccb332f52dc3c63278cd6f9e74ab9534.stex"
+path="res://.import/Upgrade Panel.png-310f375214c684e438c6498201af7d79.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Zombie Soul Icon.png"
-dest_files=[ "res://.import/Zombie Soul Icon.png-ccb332f52dc3c63278cd6f9e74ab9534.stex" ]
+source_file="res://Assets/UI/shop stuff/Upgrade Panel.png"
+dest_files=[ "res://.import/Upgrade Panel.png-310f375214c684e438c6498201af7d79.stex" ]
 
 [params]
 

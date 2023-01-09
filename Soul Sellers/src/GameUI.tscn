@@ -12,7 +12,7 @@
 [ext_resource path="res://Assets/Vampire Soul Icon.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Reaper Enemy Soul Icon.png" type="Texture" id=11]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Stopwatch:frame")
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "time"
 length = 60.0
 step = 5.0
@@ -58,7 +58,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -66,6 +66,9 @@ font_data = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Z" type="CanvasLayer" parent="."]
 
@@ -91,16 +94,19 @@ hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Z"]
 autoplay = "time"
-anims/RESET = SubResource( 2 )
-anims/time = SubResource( 3 )
+anims/RESET = SubResource( 1 )
+anims/time = SubResource( 2 )
 
 [node name="SlimeCount" type="Label" parent="Z"]
 margin_left = 300.0
 margin_top = 625.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="Z/SlimeCount"]
 position = Vector2( -25, 10 )
@@ -112,7 +118,7 @@ margin_left = 450.0
 margin_top = 625.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "000"
 
 [node name="Sprite" type="Sprite" parent="Z/GhostCount"]
@@ -125,8 +131,11 @@ margin_left = 600.0
 margin_top = 625.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="Z/ZombieCount"]
 position = Vector2( -25, 10 )
@@ -138,7 +147,7 @@ margin_left = 750.0
 margin_top = 625.0
 margin_right = 846.0
 margin_bottom = 657.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "000"
 
 [node name="Sprite" type="Sprite" parent="Z/VampireCount"]
@@ -151,7 +160,7 @@ margin_left = 900.0
 margin_top = 625.0
 margin_right = 996.0
 margin_bottom = 657.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "000"
 
 [node name="Sprite" type="Sprite" parent="Z/ReaperCount"]
