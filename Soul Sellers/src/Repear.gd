@@ -151,6 +151,10 @@ func give_soul(type: String):
 		Global.ghost_souls += 1
 	elif type == "zombie":
 		Global.zombie_souls += 1
+	elif type == "vampire":
+		Global.vampire_souls += 1
+	elif type == "reaper":
+		Global.reaper_souls += 1
 	
 	emit_signal("update_souls")
 
