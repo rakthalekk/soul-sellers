@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI/shop stuff/Shop Panel.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/shop stuff/Upgrade Panel.png" type="Texture" id=2]
@@ -14,7 +14,24 @@
 size = 8
 font_data = ExtResource( 8 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "move_offscreen"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 236.922, 137.733 ), Vector2( 236.922, 141.733 ), Vector2( 236.922, -50 ) ]
+}
+
 [node name="Upgrade Panel" type="Node2D"]
+position = Vector2( 236.922, 137.733 )
 script = ExtResource( 9 )
 
 [node name="Shop Panel" type="Sprite" parent="."]
@@ -122,6 +139,9 @@ __meta__ = {
 [node name="Upgrade Panel" type="Sprite" parent="."]
 position = Vector2( 40.2686, 35.9923 )
 texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/move_offscreen = SubResource( 2 )
 
 [connection signal="pressed" from="Quest Button" to="." method="_on_Quest_Button_pressed"]
 [connection signal="pressed" from="Sell Button" to="." method="_on_Sell_Button_pressed"]

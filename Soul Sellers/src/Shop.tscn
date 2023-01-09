@@ -1,13 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/UI/shop stuff/Background.png" type="Texture" id=1]
 [ext_resource path="res://Sound/goodybag_full_of_souls_what_a_wonderful_day.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Assets/UI/shop stuff/Shop Top Board.png" type="Texture" id=3]
 [ext_resource path="res://Assets/UI/shop stuff/Blue Swoop Thingy.png" type="Texture" id=4]
 [ext_resource path="res://src/Upgrade Panel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Ghost Portrait.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Reaper Portrait.png" type="Texture" id=7]
+[ext_resource path="res://src/Shop.gd" type="Script" id=8]
+[ext_resource path="res://Assets/UI/shop stuff/Speech Bubble.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/shop stuff/Arena Button Pressed.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI/shop stuff/Arena Button Unpressed.png" type="Texture" id=11]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="Shop" type="Node2D"]
 scale = Vector2( 2.5, 2.5 )
+script = ExtResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -21,15 +43,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Reaper Portrait" type="Sprite" parent="."]
+position = Vector2( 131.167, 170.56 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 7 )
+
+[node name="Ghost Portrait" type="Sprite" parent="."]
+position = Vector2( 344.749, 171.036 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 6 )
+
 [node name="Swoop" type="TextureRect" parent="."]
-margin_left = -0.299658
-margin_top = -0.0931274
-margin_right = 479.7
-margin_bottom = 269.907
+margin_left = -0.775342
+margin_top = -0.568811
+margin_right = 479.225
+margin_bottom = 269.431
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SpeechBubble" type="Sprite" parent="."]
+visible = false
+position = Vector2( 236.769, 214.323 )
+texture = ExtResource( 9 )
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
 position = Vector2( 236.922, 137.733 )
@@ -41,3 +78,34 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SpeechBubbleTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ArenaButton" type="TextureButton" parent="."]
+margin_left = 4.93883
+margin_top = 32.7759
+margin_right = 68.9388
+margin_bottom = 84.7759
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 480.0
+margin_bottom = 269.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fade_out = SubResource( 1 )
+
+[connection signal="start_quest" from="Upgrade Panel" to="." method="_on_Upgrade_Panel_start_quest"]
+[connection signal="timeout" from="SpeechBubbleTimer" to="." method="_on_SpeechBubbleTimer_timeout"]
+[connection signal="pressed" from="ArenaButton" to="." method="_on_ArenaButton_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
