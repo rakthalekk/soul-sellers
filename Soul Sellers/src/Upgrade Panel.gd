@@ -25,7 +25,7 @@ func update_money_count():
 	moneyText.text = str(Global.money_count)
 
 func sell_souls():
-	Global.money_count = (Global.slime_souls * 4) + (Global.ghost_souls * 9) + (Global.zombie_souls * 15) + (Global.vampire_souls * 30) + (Global.reaper_souls * 50)
+	Global.money_count += (Global.slime_souls * 4) + (Global.ghost_souls * 9) + (Global.zombie_souls * 15) + (Global.vampire_souls * 30) + (Global.reaper_souls * 50)
 	Global.slime_souls = 0
 	Global.ghost_souls = 0
 	Global.zombie_souls = 0
