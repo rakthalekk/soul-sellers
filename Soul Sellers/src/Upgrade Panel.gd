@@ -1,11 +1,14 @@
 extends Node2D
 
+signal start_quest
+
 onready var moneyText = $MarketUI/MoneyText
 onready var slimeSoulText = $MarketUI/SlimeSoulText
 onready var ghostSoulText = $MarketUI/GhostSoulText
 onready var zombieSoulText = $MarketUI/ZombieSoulText
 onready var vampireSoulText = $MarketUI/VampireSoulText
 onready var reaperSoulText = $MarketUI/ReaperSoulText
+onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	update_soul_counts()
@@ -28,7 +31,8 @@ func sell_souls():
 	update_soul_counts()
 
 func _on_Quest_Button_pressed():
-	pass # Replace with function body.
+	animationPlayer.play("move_offscreen")
+	emit_signal("start_quest")
 
 func _on_Sell_Button_pressed():
 	sell_souls()
