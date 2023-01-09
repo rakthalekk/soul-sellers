@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Slime.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Enemy Health Bar (full).png" type="Texture" id=2]
 [ext_resource path="res://Assets/Slime.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Enemy Health Bar (empty).png" type="Texture" id=4]
+[ext_resource path="res://Sound/enemy sounds/slime sounds/enemy_slime_boing.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sound/enemy sounds/slime sounds/enemy_slime_sound_2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sound/enemy sounds/slime sounds/enemy_slime_sound_1.ogg" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23, 11.5 )
@@ -130,5 +133,17 @@ autoplay = "hop"
 anims/RESET = SubResource( 4 )
 anims/hop = SubResource( 3 )
 anims/hop_back = SubResource( 5 )
+
+[node name="HopSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 8.0
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 10.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 10.0
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

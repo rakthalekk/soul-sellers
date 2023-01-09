@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_vampire_hiss.ogg-bf0f6399ee62f4d4944d0fe034bfc
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

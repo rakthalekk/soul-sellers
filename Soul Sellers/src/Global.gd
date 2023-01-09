@@ -2,7 +2,7 @@ extends Node
 
 var grave_unlock_flag = false
 var void_unlock_flag = false
-var coffin_unlock_flag = false
+var coffin_unlock_flag = true
 var homing_souls_unlock_flag = false
 var final_mission_started = false
 var final_mission_completed = false

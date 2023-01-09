@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Zombie Torso.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Enemy Health Bar (empty).png" type="Texture" id=2]
 [ext_resource path="res://Assets/Enemy Health Bar (full).png" type="Texture" id=3]
 [ext_resource path="res://src/ZombieTorso.gd" type="Script" id=4]
+[ext_resource path="res://Sound/enemy sounds/zombie sounds/enemy_zombie_sound_3.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sound/enemy sounds/zombie sounds/enemy_zombie_sound_2.ogg" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.5, 13.5 )
@@ -85,6 +87,14 @@ anims/crawl = SubResource( 4 )
 wait_time = 0.3
 one_shot = true
 autostart = true
+
+[node name="SplitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 5.0
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
 [connection signal="timeout" from="SpawnInvuln" to="." method="_on_SpawnInvuln_timeout"]

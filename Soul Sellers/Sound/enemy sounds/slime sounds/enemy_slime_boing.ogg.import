@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_slime_boing.ogg-2981f748d397862370a22944f38e40
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

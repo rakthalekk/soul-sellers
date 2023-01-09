@@ -12,6 +12,7 @@ func _ready():
 	
 	hp = HPMAX
 	velocity = direction * KBSPEED
+	$SplitSound.play()
 
 
 func _process(delta):
@@ -23,6 +24,10 @@ func _process(delta):
 		flip_sprite()
 		
 		$AnimationPlayer.play("crawl")
+
+
+func hurt_sound():
+	$HurtSound.play()
 
 
 func _on_Hitbox_body_entered(body):

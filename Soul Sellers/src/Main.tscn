@@ -372,7 +372,6 @@ visible = false
 position = Vector2( 600, 26 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 12 )
-frame = 1
 playing = true
 
 [connection signal="increase_spawn_rate" from="GameUI" to="." method="_on_GameUI_increase_spawn_rate"]

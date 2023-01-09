@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_slime_sound_1.ogg-3f20b0ccf6e40b2a56395ffdfc38
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -10,6 +10,8 @@ func _ready():
 	SOUL = preload("res://src/SlimeSoul.tscn")
 	
 	hp = HPMAX
+	
+	$SpawnSound.play()
 
 
 func start_moving():
@@ -19,11 +21,17 @@ func start_moving():
 	else:
 		$AnimationPlayer.play("hop_back")
 	
+	$HopSound.play()
+	
 	$AnimationPlayer.seek(0.201)
 	
 	flip_sprite()
 	
 	velocity = direction * SPEED
+
+
+func hurt_sound():
+	$HurtSound.play()
 
 
 func stop_moving():

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_vampire_laugh.ogg-755dc985c55282101a2b6c1b0461
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

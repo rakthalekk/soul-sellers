@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_skeleton_spawn.ogg-0b579f0fe3cf4543f00a9b4fdc3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_reaper_laugh.ogg-6b7cc098f2a36c2655d09fe261faa
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

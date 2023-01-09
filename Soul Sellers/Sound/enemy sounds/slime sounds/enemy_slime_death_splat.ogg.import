@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_slime_death_splat.ogg-dde7bc645d5d20e00fd61838
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

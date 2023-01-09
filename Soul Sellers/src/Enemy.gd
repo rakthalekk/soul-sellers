@@ -36,6 +36,11 @@ func _process(delta):
 		queue_free()
 
 
+# Overridden by specific enemy
+func hurt_sound():
+	pass
+
+
 func flip_sprite():
 	if direction.x >= 0:
 		$Sprite.flip_h = false
@@ -55,3 +60,4 @@ func hurt(dmg: int):
 	knockback = true
 	direction = (global_position - player.global_position).normalized()
 	velocity = direction * KBSPEED
+	hurt_sound()

@@ -12,6 +12,7 @@ func _ready():
 	KBFRICTION = 1500
 	
 	hp = HPMAX
+	$SpawnSound.play()
 
 
 func _process(delta):
@@ -26,6 +27,10 @@ func _process(delta):
 			$AnimationPlayer.play("stumble")
 		else:
 			$AnimationPlayer.play("stumble_back")
+
+
+func hurt_sound():
+	$HurtSound.play()
 
 
 func create_soul():

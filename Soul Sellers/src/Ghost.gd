@@ -12,6 +12,7 @@ func _ready():
 	SOUL = preload("res://src/GhostSoul.tscn")
 	
 	hp = HPMAX
+	$SpawnSound.play()
 
 
 func _process(delta):
@@ -37,9 +38,14 @@ func _process(delta):
 			$AnimationPlayer.play("float_back")
 
 
+func hurt_sound():
+	$HurtSound.play()
+
+
 func _on_ProjectileTimer_timeout():
 	if !knockback:
 		var projectile = PROJECTILE.instance()
 		projectile.global_position = global_position
 		projectile.direction = (player.global_position - global_position).normalized()
 		get_parent().add_child(projectile)
+		$ProjectileSound.play()

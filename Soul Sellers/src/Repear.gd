@@ -179,3 +179,4 @@ func _on_ActionCooldown_timeout():
 func _on_AttackCharge_timeout():
 	if Input.is_action_pressed("attack"):
 		$ChargeAttack.play()
+		$ScytheAnimation.play("flash")

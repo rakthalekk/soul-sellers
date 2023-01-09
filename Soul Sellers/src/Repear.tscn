@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Assets/Attack effect.png" type="Texture" id=1]
 [ext_resource path="res://src/Repear.gd" type="Script" id=2]
@@ -953,6 +953,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScytheSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "hurt"
@@ -980,6 +992,37 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScytheSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScytheSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.541176, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Repear" type="KinematicBody2D"]
@@ -1039,6 +1082,10 @@ anims/big_attack_back = SubResource( 13 )
 [node name="EffectsAnimation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
 anims/hurt = SubResource( 6 )
+
+[node name="ScytheAnimation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 19 )
+anims/flash = SubResource( 20 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.3

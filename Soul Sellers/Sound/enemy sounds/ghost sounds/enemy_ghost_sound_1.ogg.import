@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_ghost_sound_1.ogg-8c71d3fb478d15241cf5663f8b26
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

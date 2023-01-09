@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_reaper_defeat.ogg-e586d2645a4fe234f8ce40ace920
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

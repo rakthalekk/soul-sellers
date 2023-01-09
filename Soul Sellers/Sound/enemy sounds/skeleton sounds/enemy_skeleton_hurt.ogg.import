@@ -11,5 +11,5 @@ dest_files=[ "res://.import/enemy_skeleton_hurt.ogg-273203c37fd71e1f82634918b311
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

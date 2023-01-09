@@ -17,6 +17,7 @@ func _ready():
 	SOUL = preload("res://src/VampireSoul.tscn")
 	
 	hp = HPMAX
+	$SpawnSound.play()
 
 
 func _process(delta):
@@ -24,7 +25,7 @@ func _process(delta):
 		var dist = player.global_position - global_position
 		
 		if skeletons_defeated < SKELETON_SPAWNS:
-			if dist.length() < 200:
+			if dist.length() < 250:
 				if abs(dist.y / dist.x) > 2:
 					if global_position.x > 1000:
 						direction = Vector2(-1, 0)
@@ -41,12 +42,10 @@ func _process(delta):
 						direction = -dist.normalized()
 				else:
 					direction = -dist.normalized()
-				$SpawnTimer.stop()
 			
 			else:
 				direction = Vector2.ZERO
-				if $SpawnTimer.is_stopped():
-					$SpawnTimer.start()
+		
 		else:
 			direction = dist.normalized()
 		
@@ -58,6 +57,10 @@ func _process(delta):
 			$AnimationPlayer.play("move")
 		else:
 			$AnimationPlayer.play("move_back")
+
+
+func hurt_sound():
+	$HurtSound.play()
 
 
 func _on_SpawnTimer_timeout():
@@ -74,6 +77,7 @@ func _on_Skeleton_die():
 	skeletons_defeated += 1
 	if skeletons_defeated == SKELETON_SPAWNS:
 		$Hitbox.set_collision_mask_bit(1, true)
+		$HissSound.play()
 
 
 func _on_Hitbox_body_entered(body):
