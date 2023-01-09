@@ -1,7 +1,6 @@
 extends Control
 
 signal increase_spawn_rate
-signal end_round
 
 var next_increment = 50
 

@@ -328,12 +328,11 @@ visible = false
 position = Vector2( 600, 26 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
-[connection signal="end_round" from="GameUI" to="." method="_on_GameUI_end_round"]
 [connection signal="increase_spawn_rate" from="GameUI" to="." method="_on_GameUI_increase_spawn_rate"]
 [connection signal="body_entered" from="Gate" to="." method="_on_Gate_body_entered"]
 [connection signal="body_exited" from="Gate" to="." method="_on_Gate_body_exited"]
+[connection signal="die" from="YSort/Repear" to="." method="_on_Repear_die"]
 [connection signal="update_health" from="YSort/Repear" to="GameUI" method="_on_Repear_update_health"]
 [connection signal="update_souls" from="YSort/Repear" to="GameUI" method="_on_Repear_update_souls"]

@@ -6,7 +6,7 @@ func _on_GameUI_increase_spawn_rate():
 		spawner.increase_spawn_rate()
 
 
-func _on_GameUI_end_round():
+func end_round():
 	$TimeUp.visible = true
 	get_tree().paused = true
 	$TimeUp/AnimationPlayer.play("fade out")
@@ -38,4 +38,13 @@ func _on_Gate_body_exited(body):
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		if $Gate.get_overlapping_bodies().size() > 0:
-			_on_GameUI_end_round()
+			end_round()
+
+
+func _on_Repear_die():
+	Global.slime_souls /= 2
+	Global.ghost_souls /= 2
+	Global.zombie_souls /= 2
+	Global.vampire_souls /= 2
+	Global.reaper_souls /= 2
+	end_round()

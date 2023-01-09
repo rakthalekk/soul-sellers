@@ -33,7 +33,6 @@ __meta__ = {
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
 position = Vector2( 236.922, 137.733 )
-scale = Vector2( 1, 1 )
 
 [node name="Top Board" type="TextureRect" parent="."]
 margin_right = 480.0

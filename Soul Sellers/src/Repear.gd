@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 signal update_health(percent)
 signal update_souls
+signal die
 
 const SPEED = 300
 const DASHSPEED = 1200
@@ -37,15 +38,11 @@ func _process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, delta * DASHFRICTION)
 		
-		if global_position.distance_to(dash_pos) < 20:
-			end_action()
 	
 	$Scythe.look_at(get_global_mouse_position())
 	
 	if ["dash", "dash_back"].has(anim_player.current_animation):
 		$Scythe/Cursor.global_position = cursor_pos
-	elif get_global_mouse_position().distance_to(global_position) < 200:
-		$Scythe/Cursor.global_position = get_global_mouse_position()
 	else:
 		$Scythe/Cursor.position = Vector2(200, 2)
 	
@@ -98,7 +95,7 @@ func _process(delta):
 			velocity = direction * DASHSPEED
 	
 	if hp <= 0:
-		queue_free()
+		emit_signal("die")
 
 
 func play_attack_anim(anim: String):
