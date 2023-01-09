@@ -14,6 +14,17 @@ onready var animationPlayer = $AnimationPlayer
 var its_dialogue_time = false
 
 func _ready():
+	if Global.homing_souls_unlock_flag:
+		$UpgradeCosts/Coin.visible = false
+	if Global.grave_unlock_flag:
+		$UpgradeCosts/Coin2.visible = false
+	if Global.dmg_up_flag:
+		$UpgradeCosts/Coin3.visible = false
+	if Global.coffin_unlock_flag:
+		$UpgradeCosts/Coin4.visible = false
+	if Global.void_unlock_flag:
+		$UpgradeCosts/Coin5.visible = false
+	
 	update_soul_counts()
 
 func _process(delta):
