@@ -32,9 +32,9 @@ func spawn():
 	ghost.global_position = global_position
 	get_parent().add_child(ghost)
 	if maxspawn:
-		$SpawnRate.start(2)
+		$SpawnRate.start(15)
 	elif nightmode:
-		$SpawnRate.start(5)
+		$SpawnRate.start(15)
 	else:
 		$SpawnRate.start(rng.randf_range(spawn_rate - 1, spawn_rate + 3))
 
