@@ -1,13 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/UI/shop stuff/Background.png" type="Texture" id=1]
 [ext_resource path="res://Sound/goodybag_full_of_souls_what_a_wonderful_day.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/UI/shop stuff/Shop Top Board.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/shop stuff/Blue Swoop Thingy.png" type="Texture" id=4]
+[ext_resource path="res://src/Upgrade Panel.tscn" type="PackedScene" id=5]
 
 [node name="Shop" type="Node2D"]
-
-[node name="Repear" parent="." instance=ExtResource( 1 )]
-position = Vector2( 554, 324 )
+scale = Vector2( 2.5, 2.5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Swoop" type="TextureRect" parent="."]
+margin_left = -0.299658
+margin_top = -0.0931274
+margin_right = 479.7
+margin_bottom = 269.907
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 236.922, 137.733 )
+scale = Vector2( 1, 1 )
+
+[node name="Top Board" type="TextureRect" parent="."]
+margin_right = 480.0
+margin_bottom = 48.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
