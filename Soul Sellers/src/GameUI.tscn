@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Health Bar (empty).png" type="Texture" id=1]
 [ext_resource path="res://src/GameUI.gd" type="Script" id=2]
@@ -25,6 +25,37 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "nighttime"
+length = 60.0
+step = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stopwatch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 60 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "enter_berserk"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -95,6 +126,7 @@ hframes = 12
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Z"]
 autoplay = "time"
 anims/RESET = SubResource( 1 )
+anims/nighttime = SubResource( 4 )
 anims/time = SubResource( 2 )
 
 [node name="SlimeCount" type="Label" parent="Z"]

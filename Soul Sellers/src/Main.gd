@@ -22,7 +22,19 @@ func tint():
 	$Bong.play()
 
 
+func berserk():
+	$CanvasModulate/AnimationPlayer.play("dark tint")
+	$Bong.play()
+
+
 func increase_spawn_rates():
+	for spawner in get_tree().get_nodes_in_group("spawner"):
+		spawner.night_mode()
+	
+	$GameUI.start_night_clock()
+
+
+func annihilate_spawn_rates():
 	for spawner in get_tree().get_nodes_in_group("spawner"):
 		spawner.max_spawn_rate()
 
