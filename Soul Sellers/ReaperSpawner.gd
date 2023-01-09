@@ -2,7 +2,7 @@ extends Node2D
 
 const REAPER = preload("res://src/ReaperEnemy.tscn")
 
-var spawn_rate = 20.0
+var spawn_rate = 24.0
 var nightmode = false
 var maxspawn = false
 

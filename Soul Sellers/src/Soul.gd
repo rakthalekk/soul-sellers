@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED = 100
+const SPEED = 300
 
 export(String) var type
 export(AudioStream) var sound

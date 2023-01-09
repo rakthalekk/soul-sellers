@@ -2,7 +2,7 @@ extends Node2D
 
 const VAMPIRE = preload("res://src/Vampire.tscn")
 
-var spawn_rate = 16.0
+var spawn_rate = 18.0
 var nightmode = false
 var maxspawn = false
 

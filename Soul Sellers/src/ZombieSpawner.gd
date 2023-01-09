@@ -2,7 +2,7 @@ extends Node2D
 
 const ZOMBIE = preload("res://src/Zombie.tscn")
 
-var spawn_rate = 12.0
+var spawn_rate = 10.0
 var nightmode = false
 var maxspawn = false
 
@@ -32,9 +32,9 @@ func spawn():
 	zombie.global_position = global_position
 	get_parent().add_child(zombie)
 	if maxspawn:
-		$SpawnRate.start(4)
+		$SpawnRate.start(5)
 	elif nightmode:
-		$SpawnRate.start(7)
+		$SpawnRate.start(8)
 	else:
 		$SpawnRate.start(rng.randf_range(spawn_rate - 1, spawn_rate + 3))
 

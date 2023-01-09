@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "nighttime"
 length = 60.0
 step = 5.0
@@ -58,8 +58,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "time"
+[sub_resource type="Animation" id=3]
 length = 60.0
 step = 5.0
 tracks/0/type = "value"
@@ -89,7 +88,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -126,15 +125,15 @@ hframes = 12
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Z"]
 autoplay = "time"
 anims/RESET = SubResource( 1 )
-anims/nighttime = SubResource( 4 )
-anims/time = SubResource( 2 )
+anims/nighttime = SubResource( 2 )
+anims/time = SubResource( 3 )
 
 [node name="SlimeCount" type="Label" parent="Z"]
 margin_left = 300.0
 margin_top = 625.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "000"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -150,7 +149,7 @@ margin_left = 450.0
 margin_top = 625.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="Sprite" type="Sprite" parent="Z/GhostCount"]
@@ -163,7 +162,7 @@ margin_left = 600.0
 margin_top = 625.0
 margin_right = 40.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "000"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -179,7 +178,7 @@ margin_left = 750.0
 margin_top = 625.0
 margin_right = 846.0
 margin_bottom = 657.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="Sprite" type="Sprite" parent="Z/VampireCount"]
@@ -192,7 +191,7 @@ margin_left = 900.0
 margin_top = 625.0
 margin_right = 996.0
 margin_bottom = 657.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "000"
 
 [node name="Sprite" type="Sprite" parent="Z/ReaperCount"]

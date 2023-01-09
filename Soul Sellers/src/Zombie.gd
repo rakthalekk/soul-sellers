@@ -8,7 +8,7 @@ func _ready():
 	HPMAX = 12.0
 	SPEED = 100
 	dmg = 2
-	KBSPEED = 400
+	KBSPEED = 600
 	KBFRICTION = 1500
 	
 	hp = HPMAX
