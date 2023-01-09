@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameUI.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://src/VampireSpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/ZombieSpawner.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/ReaperEnemySpawner.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Afterlife Crisis Ver2.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://src/Pause Menu.gd" type="Script" id=15]
+[ext_resource path="res://src/Vampire.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -270,6 +273,10 @@ animations = [ {
 "speed": 4.0
 } ]
 
+[sub_resource type="DynamicFont" id=13]
+size = 50
+font_data = ExtResource( 14 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -343,6 +350,9 @@ position = Vector2( 360.924, 537.381 )
 [node name="ReaperSpawner" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 822.336, 543.327 )
 
+[node name="Vampire" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 706, 328 )
+
 [node name="TimeUp" type="Control" parent="."]
 pause_mode = 2
 anchor_right = 1.0
@@ -378,9 +388,62 @@ scale = Vector2( 3, 3 )
 frames = SubResource( 12 )
 playing = true
 
+[node name="Pause Menu" type="Control" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1200.0
+margin_bottom = 675.0
+script = ExtResource( 15 )
+
+[node name="ColorRect" type="ColorRect" parent="Pause Menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.258824, 0.227451, 0.227451, 0.67451 )
+
+[node name="ResumeButton" type="Button" parent="Pause Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.0
+margin_top = -178.5
+margin_right = 156.0
+margin_bottom = -121.5
+custom_fonts/font = SubResource( 13 )
+text = "Resume"
+
+[node name="Shop" type="Button" parent="Pause Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.0
+margin_top = -78.5
+margin_right = 156.0
+margin_bottom = -21.5
+custom_fonts/font = SubResource( 13 )
+text = "Shop"
+
+[node name="Exit" type="Button" parent="Pause Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.0
+margin_top = 21.5
+margin_right = 156.0
+margin_bottom = 78.5
+custom_fonts/font = SubResource( 13 )
+text = "Exit"
+
 [connection signal="increase_spawn_rate" from="GameUI" to="." method="_on_GameUI_increase_spawn_rate"]
 [connection signal="body_entered" from="Gate" to="." method="_on_Gate_body_entered"]
 [connection signal="body_exited" from="Gate" to="." method="_on_Gate_body_exited"]
 [connection signal="die" from="YSort/Repear" to="." method="_on_Repear_die"]
 [connection signal="update_health" from="YSort/Repear" to="GameUI" method="_on_Repear_update_health"]
 [connection signal="update_souls" from="YSort/Repear" to="GameUI" method="_on_Repear_update_souls"]
+[connection signal="pressed" from="Pause Menu/ResumeButton" to="Pause Menu" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="Pause Menu/Shop" to="Pause Menu" method="_on_Shop_pressed"]
+[connection signal="pressed" from="Pause Menu/Exit" to="Pause Menu" method="_on_Exit_pressed"]

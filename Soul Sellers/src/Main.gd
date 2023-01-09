@@ -1,6 +1,10 @@
 extends Node2D
 
 
+func _ready():
+	Global.set_last_num()
+
+
 func _on_GameUI_increase_spawn_rate():
 	for spawner in get_tree().get_nodes_in_group("spawner"):
 		spawner.increase_spawn_rate()

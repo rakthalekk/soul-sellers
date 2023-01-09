@@ -79,6 +79,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("secondary_action") && $ActionCooldown.time_left == 0:
 			action = true
 			$ActionCooldown.start()
+			$DashSound.play()
 			set_collision_layer_bit(1, false)
 			
 			dash_pos = get_global_mouse_position()
@@ -149,6 +150,7 @@ func hurt(dmg: int):
 		hp -= dmg
 		$EffectsAnimation.play("hurt")
 		emit_signal("update_health", hp / HPMAX * 100)
+		$HurtSound.play()
 
 
 func give_soul(type: String):
