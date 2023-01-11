@@ -190,7 +190,7 @@ tracks/13/keys = {
 "values": [ 0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Scythe/Cursor:modulate")
+tracks/14/path = NodePath("CursorControl/DashCursor:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -256,7 +256,7 @@ tracks/3/keys = {
 "values": [ 11, 10 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Scythe/Cursor:modulate")
+tracks/4/path = NodePath("CursorControl/DashCursor:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -322,7 +322,7 @@ tracks/3/keys = {
 "values": [ 9, 8 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Scythe/Cursor:modulate")
+tracks/4/path = NodePath("CursorControl/DashCursor:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -478,6 +478,30 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scythe/Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Scythe/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ true ]
 }
 
@@ -1053,6 +1077,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scythe"]
 position = Vector2( 48.5, 2 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="Scythe"]
 visible = false
@@ -1061,8 +1086,10 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 hframes = 4
 
-[node name="Cursor" type="Sprite" parent="Scythe"]
-position = Vector2( 200, 2 )
+[node name="CursorControl" type="Node2D" parent="."]
+
+[node name="DashCursor" type="Sprite" parent="CursorControl"]
+position = Vector2( 200, 12 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 5 )
 

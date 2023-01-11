@@ -58,9 +58,9 @@ func _process(delta):
 
 
 func _on_Repear_die():
-	Global.slime_souls /= 2
-	Global.ghost_souls /= 2
-	Global.zombie_souls /= 2
-	Global.vampire_souls /= 2
-	Global.reaper_souls /= 2
+	Global.slime_souls = Global.slime_souls - (Global.slime_souls - Global.last_slime_num) / 2
+	Global.ghost_souls = Global.ghost_souls - (Global.ghost_souls - Global.last_ghost_num) / 2
+	Global.zombie_souls = Global.zombie_souls - (Global.zombie_souls - Global.last_zombie_num) / 2
+	Global.vampire_souls = Global.vampire_souls - (Global.vampire_souls - Global.last_vampire_num) / 2
+	Global.reaper_souls = Global.reaper_souls - (Global.reaper_souls - Global.last_reaper_num) / 2
 	end_round()

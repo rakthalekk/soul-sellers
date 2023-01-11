@@ -49,7 +49,7 @@ sound = ExtResource( 3 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="CollectionArea" type="Area2D" parent="."]

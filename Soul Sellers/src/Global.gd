@@ -1,5 +1,7 @@
 extends Node
 
+var alt_controls = false
+
 var grave_unlock_flag = false
 var void_unlock_flag = false
 var dmg_up_flag = false

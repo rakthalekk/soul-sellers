@@ -21,7 +21,6 @@ func _process(delta):
 	move_and_slide(velocity)
 
 func _on_CollectionArea_body_entered(body):
-	print("colliding")
 	body.give_soul(type)
 	body.play_pickup_sound(sound)
 	queue_free()
