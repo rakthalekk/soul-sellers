@@ -46,7 +46,8 @@ func update_money_count():
 	moneyText.text = str(Global.money_count)
 
 func sell_souls():
-	Global.money_count += (Global.slime_souls * 4) + (Global.ghost_souls * 9) + (Global.zombie_souls * 15) + (Global.vampire_souls * 30) + (Global.reaper_souls * 50)
+	Global.money_count += clamp((Global.slime_souls * 4) + (Global.ghost_souls * 9) + (Global.zombie_souls * 15) + 
+		(Global.vampire_souls * 30) + (Global.reaper_souls * 50), 0, 999999)
 	Global.slime_souls = 0
 	Global.ghost_souls = 0
 	Global.zombie_souls = 0
@@ -68,6 +69,7 @@ func _on_Homing_Souls_pressed():
 	Global.money_count -= 50
 	Global.homing_souls_unlock_flag = true
 	update_money_count()
+	$UpgradeCosts/Coin.visible = false
 
 func _on_Grave_Button_pressed():
 	if Global.money_count < 250 or Global.grave_unlock_flag:
@@ -75,6 +77,7 @@ func _on_Grave_Button_pressed():
 	Global.money_count -= 250
 	Global.grave_unlock_flag = true
 	update_money_count()
+	$UpgradeCosts/Coin2.visible = false
 
 func _on_Void_Button_pressed():
 	if Global.money_count < 1200 or Global.void_unlock_flag:
@@ -82,6 +85,7 @@ func _on_Void_Button_pressed():
 	Global.money_count -= 1200
 	Global.void_unlock_flag = true
 	update_money_count()
+	$UpgradeCosts/Coin5.visible = false
 
 func _on_Coffin_Button_pressed():
 	if Global.money_count < 800 or Global.coffin_unlock_flag:
@@ -89,6 +93,7 @@ func _on_Coffin_Button_pressed():
 	Global.money_count -= 800
 	Global.coffin_unlock_flag = true
 	update_money_count()
+	$UpgradeCosts/Coin4.visible = false
 
 
 func _on_DmgButton_pressed():
@@ -97,3 +102,4 @@ func _on_DmgButton_pressed():
 	Global.money_count -= 400
 	Global.dmg_up_flag = true
 	update_money_count()
+	$UpgradeCosts/Coin3.visible = false

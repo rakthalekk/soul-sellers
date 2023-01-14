@@ -7,10 +7,14 @@ var void_unlock_flag = false
 var dmg_up_flag = false
 var coffin_unlock_flag = false
 var homing_souls_unlock_flag = false
-var final_mission_started = false
-var final_mission_completed = false
 
 var day_num = 1
+
+var quest_1_complete = false
+var quest_2_complete = false
+var quest_3_complete = false
+var quest_4_complete = false
+var quest_5_complete = false
 
 var slime_souls = 0
 var ghost_souls = 0

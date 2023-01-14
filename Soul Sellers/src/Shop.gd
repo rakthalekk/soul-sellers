@@ -24,22 +24,27 @@ func _on_ArenaButton_pressed():
 	animationPlayer.play("fade_out")
 
 func check_quest_completion():
-	if Global.day_num >= 2 and Global.slime_souls >= 15:
+	if Global.day_num >= 2 and Global.slime_souls >= 15 and !Global.quest_1_complete:
 		Global.money_count += 90
 		Global.slime_souls -= 15
-	if Global.day_num >= 3 and Global.zombie_souls >= 5 and Global.ghost_souls >= 5:
+		Global.quest_1_complete = true
+	if Global.day_num >= 3 and Global.zombie_souls >= 5 and Global.ghost_souls >= 5 and !Global.quest_2_complete:
 		Global.money_count += 175
 		Global.zombie_souls -= 5
 		Global.ghost_souls -=5
-	if Global.day_num >=4 and Global.vampire_souls >= 3:
+		Global.quest_2_complete = true
+	if Global.day_num >=4 and Global.vampire_souls >= 3 and !Global.quest_3_complete:
 		Global.money_count += 180
 		Global.vampire_souls -= 3
-	if Global.day_num >= 5 and Global.slime_souls >= 60:
+		Global.quest_3_complete = true
+	if Global.day_num >= 5 and Global.slime_souls >= 60 and !Global.quest_4_complete:
 		Global.money_count += 480
 		Global.slime_souls -= 60
-	if Global.day_num >= 6 and Global.reaper_souls >= 1:
+		Global.quest_4_complete = true
+	if Global.day_num >= 6 and Global.reaper_souls >= 1 and !Global.quest_5_complete:
 		Global.money_count += 5000
 		Global.reaper_souls -= 1
+		Global.quest_5_complete = true
 
 func quest_initiate():
 	if Global.day_num == 1:
@@ -52,7 +57,7 @@ func quest_initiate():
 		dialogue.text = "I'll pay 2 times the going rate for 60 slime souls"
 	elif Global.day_num == 5:
 		dialogue.text = "I need the soul of a grim reaper. Find one for me for me ASAP!"
-	elif Global.final_mission_completed:
+	elif Global.quest_5_complete:
 		dialogue.text = "No new requests from me!"
 	else:
 		dialogue.text = "How's the grim reaper hunt going?"
