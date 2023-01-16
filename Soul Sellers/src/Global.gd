@@ -14,7 +14,7 @@ var unlocked_spawners = ["slime", "ghost"]
 #var unlocked_spawners = ["slime", "ghost", "zombie", "vampire", "reaper"]
 
 var left_spawner = "slime"
-var middle_spawner = "ghost"
+var middle_spawner = "reaper"
 var right_spawner = "slime"
 #var left_spawner = "reaper"
 #var middle_spawner = "reaper"

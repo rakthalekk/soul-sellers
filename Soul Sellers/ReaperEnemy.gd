@@ -14,7 +14,7 @@ onready var anim_player = $AnimationPlayer
 # Overrides constants
 func _ready():
 	HPMAX = 24.0
-	SPEED = 250
+	SPEED = 200 #orginal was 250
 	dmg = 2
 	KBSPEED = 1000
 	KBFRICTION = 3000
@@ -147,3 +147,4 @@ func _on_AttackTell_finished():
 		anim_player.play("attack_back")
 	velocity = Vector2.ZERO
 	$AttackCooldown.start()
+

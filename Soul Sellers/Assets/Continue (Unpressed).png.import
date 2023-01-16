@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Reaper Enemy.png-c85a4543e6e59b3642c3b2736d10780e.stex"
+path="res://.import/Continue (Unpressed).png-c1fe8d57e56bfb4f84eed66291c62861.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Reaper Enemy.png"
-dest_files=[ "res://.import/Reaper Enemy.png-c85a4543e6e59b3642c3b2736d10780e.stex" ]
+source_file="res://Assets/Continue (Unpressed).png"
+dest_files=[ "res://.import/Continue (Unpressed).png-c1fe8d57e56bfb4f84eed66291c62861.stex" ]
 
 [params]
 

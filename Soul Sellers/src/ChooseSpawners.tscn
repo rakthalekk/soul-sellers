@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Afterlife Crisis Ver2.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI/shop stuff/Grave (unpressed).png" type="Texture" id=2]
@@ -8,6 +8,12 @@
 [ext_resource path="res://Assets/Coffin (Vampire Spawner).png" type="Texture" id=6]
 [ext_resource path="res://Assets/Cauldron Icon.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Void Icon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Previous Spawner (Unpressed).png" type="Texture" id=9]
+[ext_resource path="res://Assets/Next Spawner (pressed).png" type="Texture" id=10]
+[ext_resource path="res://Assets/Previous Spawner (pressed).png" type="Texture" id=11]
+[ext_resource path="res://Assets/Next Spawner (Unpressed).png" type="Texture" id=12]
+[ext_resource path="res://Assets/Continue (Unpressed).png" type="Texture" id=13]
+[ext_resource path="res://Assets/Continue (pressed).png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -27,10 +33,10 @@ ZOMBIE_SPAWNER_TEXTURE = ExtResource( 4 )
 VAMPIRE_SPAWNER_TEXTURE = ExtResource( 6 )
 REAPER_SPAWNER_TEXTURE = ExtResource( 8 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.156863, 0.152941, 0.168627, 1 )
+color = Color( 0.309804, 0.560784, 0.729412, 1 )
 
 [node name="ChooseLabel" type="Label" parent="."]
 anchor_left = 0.5
@@ -64,21 +70,23 @@ text = "Vampire"
 align = 1
 valign = 1
 
-[node name="LL" type="Button" parent="LeftSpawner"]
+[node name="LL" type="TextureButton" parent="LeftSpawner"]
 margin_left = 97.0
 margin_top = 471.0
 margin_right = 137.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 2 )
-text = "*"
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
+expand = true
 
-[node name="LR" type="Button" parent="LeftSpawner"]
+[node name="LR" type="TextureButton" parent="LeftSpawner"]
 margin_left = 366.0
 margin_top = 471.0
 margin_right = 406.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 2 )
-text = "*"
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 10 )
+expand = true
 
 [node name="MiddleSpawner" type="Control" parent="."]
 margin_left = 350.0
@@ -103,21 +111,23 @@ text = "Vampire"
 align = 1
 valign = 1
 
-[node name="ML" type="Button" parent="MiddleSpawner"]
+[node name="ML" type="TextureButton" parent="MiddleSpawner"]
 margin_left = 97.0
 margin_top = 471.0
 margin_right = 137.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 2 )
-text = "*"
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
+expand = true
 
-[node name="MR" type="Button" parent="MiddleSpawner"]
+[node name="MR" type="TextureButton" parent="MiddleSpawner"]
 margin_left = 366.0
 margin_top = 471.0
 margin_right = 406.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 2 )
-text = "*"
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 10 )
+expand = true
 
 [node name="RightSpawner" type="Control" parent="."]
 margin_left = 700.0
@@ -142,33 +152,39 @@ text = "Vampire"
 align = 1
 valign = 1
 
-[node name="RL" type="Button" parent="RightSpawner"]
+[node name="RL" type="TextureButton" parent="RightSpawner"]
 margin_left = 97.0
 margin_top = 471.0
 margin_right = 137.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 2 )
-text = "*"
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
+expand = true
 
-[node name="RR" type="Button" parent="RightSpawner"]
+[node name="RR" type="TextureButton" parent="RightSpawner"]
 margin_left = 366.0
 margin_top = 471.0
 margin_right = 406.0
 margin_bottom = 511.0
-custom_fonts/font = SubResource( 2 )
-text = "*"
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 10 )
+expand = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -122.0
-margin_top = -76.0
+margin_top = -78.0
 margin_right = 122.0
 margin_bottom = -39.0
-custom_fonts/font = SubResource( 2 )
-text = "Continue"
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="LeftSpawner/LL" to="." method="_on_LL_pressed"]
 [connection signal="pressed" from="LeftSpawner/LR" to="." method="_on_LR_pressed"]
