@@ -75,11 +75,14 @@ position = Vector2( 344.749, 171.036 )
 texture = ExtResource( 6 )
 
 [node name="Swoop" type="TextureRect" parent="."]
-margin_left = -0.775342
-margin_top = -1.20377
-margin_right = 479.225
-margin_bottom = 268.796
+margin_top = -1.0
+margin_right = 480.0
+margin_bottom = 270.0
 texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SpeechBubble" type="Sprite" parent="."]
 visible = false
@@ -98,9 +101,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="AnimatedSprite" parent="SpeechBubble"]
+[node name="DialogueNextIndicator" type="AnimatedSprite" parent="SpeechBubble"]
 position = Vector2( 108.261, 45.3997 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
@@ -200,8 +204,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DialogueTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="questing_done" from="Upgrade Panel" to="." method="_on_Upgrade_Panel_questing_done"]
 [connection signal="start_quest" from="Upgrade Panel" to="." method="_on_Upgrade_Panel_start_quest"]
 [connection signal="timeout" from="SpeechBubbleTimer" to="." method="_on_SpeechBubbleTimer_timeout"]
 [connection signal="pressed" from="ArenaButton" to="." method="_on_ArenaButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="DialogueTimer" to="." method="_on_DialogueTimer_timeout"]

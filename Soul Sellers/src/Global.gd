@@ -8,8 +8,6 @@ var dmg_up_flag = false
 var coffin_unlock_flag = false
 var homing_souls_unlock_flag = false
 
-var day_num = 1
-
 var unlocked_spawners = ["slime", "ghost"]
 #var unlocked_spawners = ["slime", "ghost", "zombie", "vampire", "reaper"]
 
@@ -20,6 +18,7 @@ var right_spawner = "slime"
 #var middle_spawner = "reaper"
 #var right_spawner = "reaper"
 
+var first_time_shop = true
 var quest_1_complete = false
 var quest_2_complete = false
 var quest_3_complete = false
