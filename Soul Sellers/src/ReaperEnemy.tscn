@@ -15,7 +15,7 @@
 extents = Vector2( 22, 18 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 21, 59.5 )
+extents = Vector2( 25.5, 66 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -178,7 +178,7 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
-length = 0.4
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Scythe/CollisionShape2D:disabled")
@@ -187,7 +187,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.4 ),
+"times": PoolRealArray( 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -199,7 +199,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -213,7 +213,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.25, 0.3, 0.35 ),
+"times": PoolRealArray( 0.1, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
@@ -225,7 +225,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.2, 0.4 ),
+"times": PoolRealArray( 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -237,7 +237,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 3, 3 ) ]
@@ -249,7 +249,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 21, 59.5 ) ]
@@ -261,7 +261,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 47, 1.5 ) ]
@@ -273,7 +273,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 47.5, 0 ) ]
@@ -297,7 +297,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -305,7 +305,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "attack_back"
-length = 0.4
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Scythe/CollisionShape2D:disabled")
@@ -314,7 +314,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.4 ),
+"times": PoolRealArray( 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -326,7 +326,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -340,7 +340,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.25, 0.3, 0.35 ),
+"times": PoolRealArray( 0.1, 0.15, 0.2, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
@@ -352,7 +352,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.2, 0.4 ),
+"times": PoolRealArray( 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -364,7 +364,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 3, 3 ) ]
@@ -376,7 +376,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 21, 59.5 ) ]
@@ -388,7 +388,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 47, 1.5 ) ]
@@ -400,7 +400,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 47.5, 0 ) ]
@@ -424,7 +424,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -944,9 +944,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scythe"]
-position = Vector2( 47, 1.5 )
+position = Vector2( 48.5, 2 )
 shape = SubResource( 2 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="Scythe"]
 visible = false
@@ -954,7 +953,6 @@ position = Vector2( 47.5, 0 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 9 )
 hframes = 4
-frame = 2
 
 [node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = -37.0
@@ -996,11 +994,12 @@ stream = ExtResource( 2 )
 volume_db = 3.0
 
 [node name="DashCooldown" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.6
 one_shot = true
 autostart = true
 

@@ -34,8 +34,9 @@ func _process(delta):
 				direction = Vector2.ZERO
 			elif dist.length() < 125:
 				direction = -dist.normalized()
-		
-		velocity = direction * SPEED
+			velocity = direction * 300
+		else:
+			velocity = direction * SPEED
 		
 		if ["attack", "attack_back", "big_attack", "big_attack_back"].has(anim_player.current_animation):
 			velocity = Vector2.ZERO
@@ -47,11 +48,11 @@ func _process(delta):
 	$Scythe.look_at(global_position + direction * 500)
 	
 	if $DashTell.playing:
-		$Sprite.modulate = Color(0.5, 0.5, 1)
+		$ScytheSprite.modulate = Color(0.5, 0.5, 1)
 	elif $AttackTell.playing:
-		$Sprite.modulate = Color(1, 0.5, 0.5)
+		$ScytheSprite.modulate = Color(1, 0.5, 0.5)
 	else:
-		$Sprite.modulate = Color(1, 1, 1)
+		$ScytheSprite.modulate = Color(1, 1, 1)
 	
 	if !action:
 		if dist.length() < 350 && $DashCooldown.time_left == 0:
@@ -134,7 +135,7 @@ func _on_DashTell_finished():
 		anim_player.play("dash")
 	else:
 		anim_player.play("dash_back")
-	$DashCooldown.start()
+	$DashCooldown.start(5)
 	velocity = direction * DASHSPEED
 
 
