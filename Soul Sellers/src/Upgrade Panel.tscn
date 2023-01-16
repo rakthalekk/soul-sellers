@@ -62,32 +62,26 @@ margin_left = 11.0582
 margin_top = -52.5499
 margin_right = 42.0582
 margin_bottom = -44.5499
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SlimeSoulText" type="Label" parent="MarketUI"]
 margin_left = 10.7933
 margin_top = -33.7444
 margin_right = 41.7933
 margin_bottom = -25.7444
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GhostSoulText" type="Label" parent="MarketUI"]
 margin_left = 10.5284
 margin_top = -13.6765
 margin_right = 41.5284
 margin_bottom = -5.67653
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -98,8 +92,8 @@ margin_left = 10.9744
 margin_top = 6.09403
 margin_right = 41.9744
 margin_bottom = 14.094
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,8 +104,8 @@ margin_left = 10.8257
 margin_top = 27.6484
 margin_right = 41.8257
 margin_bottom = 35.6484
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -122,8 +116,8 @@ margin_left = 10.6771
 margin_top = 47.7163
 margin_right = 41.6771
 margin_bottom = 55.7163
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "text"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -163,9 +157,6 @@ margin_bottom = 11.0
 rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Grave Button" type="TextureButton" parent="Upgrade Panel"]
 margin_left = -54.4712
@@ -223,8 +214,8 @@ margin_left = 6.4615
 margin_top = -2.4976
 margin_right = 22.4615
 margin_bottom = 11.5024
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "50"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -239,8 +230,8 @@ margin_left = 5.3378
 margin_top = -2.123
 margin_right = 29.3378
 margin_bottom = 11.877
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "250"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -255,8 +246,8 @@ margin_left = 4.58868
 margin_top = -2.87219
 margin_right = 28.5887
 margin_bottom = 11.1278
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "500"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,8 +262,8 @@ margin_left = 4.40131
 margin_top = -2.123
 margin_right = 28.4013
 margin_bottom = 11.877
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "800"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -287,8 +278,8 @@ margin_left = 5.349
 margin_top = -2.32141
 margin_right = 36.349
 margin_bottom = 11.6786
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "1200"
 __meta__ = {
 "_edit_use_anchors_": false

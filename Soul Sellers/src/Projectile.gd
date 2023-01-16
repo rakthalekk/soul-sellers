@@ -16,6 +16,8 @@ func _physics_process(delta):
 
 func _on_Projectile_body_entered(body):
 	if body is Repear:
-		body.hurt(dmg)
-	
-	queue_free()
+		if !["dash", "dash_back"].has(body.anim_player.current_animation):
+			body.hurt(dmg)
+			queue_free()
+	else:
+		queue_free()

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SkeletonDeathSound.gd" type="Script" id=1]
+[ext_resource path="res://Sound/enemy sounds/reaper sounds/enemy_reaper_defeat.ogg" type="AudioStream" id=2]
+
+[node name="ReaperDeathSound" type="AudioStreamPlayer"]
+stream = ExtResource( 2 )
+volume_db = 3.0
+autoplay = true
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

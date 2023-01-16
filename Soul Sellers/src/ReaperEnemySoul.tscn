@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Sound/soul pickup sounds/soul_pickup_ghost.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Sound/soul pickup sounds/soul_pickup_reaper.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Reaper Enemy Soul.png" type="Texture" id=2]
 [ext_resource path="res://src/Soul.gd" type="Script" id=3]
 
@@ -49,7 +49,7 @@ sound = ExtResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="CollectionArea" type="Area2D" parent="."]

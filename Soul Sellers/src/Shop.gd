@@ -64,7 +64,7 @@ func quest_initiate():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	Global.day_num += 1
-	get_tree().change_scene("res://src/Main.tscn")
+	get_tree().change_scene("res://src/ChooseSpawners.tscn")
 
 func _on_Upgrade_Panel_questing_done():
 	speechBubble.visible = false

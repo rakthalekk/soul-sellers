@@ -119,7 +119,6 @@ func _process(delta):
 		action = true
 		$ActionCooldown.start()
 		$DashSound.play()
-		set_collision_layer_bit(1, false)
 		
 		cursor_pos = $CursorControl/DashCursor.global_position
 		
@@ -182,17 +181,15 @@ func play_attack_anim(anim: String):
 func end_action():
 	action = false
 	anim_player.play("idle")
-	set_collision_layer_bit(1, true)
 
 
 func end_action_back():
 	action = false
 	anim_player.play("idle_back")
-	set_collision_layer_bit(1, true)
 
 
 func hurt(dmg: int):
-	if !["hurt"].has($EffectsAnimation.current_animation):
+	if !["hurt"].has($EffectsAnimation.current_animation) && !["dash", "dash_back"].has(anim_player.current_animation):
 		hp -= dmg
 		$EffectsAnimation.play("hurt")
 		emit_signal("update_health", hp / HPMAX * 100)

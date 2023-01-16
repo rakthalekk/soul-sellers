@@ -78,6 +78,7 @@ func _on_Grave_Button_pressed():
 	Global.grave_unlock_flag = true
 	update_money_count()
 	$UpgradeCosts/Coin2.visible = false
+	Global.unlocked_spawners.append("zombie")
 
 func _on_Void_Button_pressed():
 	if Global.money_count < 1200 or Global.void_unlock_flag:
@@ -86,6 +87,7 @@ func _on_Void_Button_pressed():
 	Global.void_unlock_flag = true
 	update_money_count()
 	$UpgradeCosts/Coin5.visible = false
+	Global.unlocked_spawners.append("reaper")
 
 func _on_Coffin_Button_pressed():
 	if Global.money_count < 800 or Global.coffin_unlock_flag:
@@ -94,6 +96,7 @@ func _on_Coffin_Button_pressed():
 	Global.coffin_unlock_flag = true
 	update_money_count()
 	$UpgradeCosts/Coin4.visible = false
+	Global.unlocked_spawners.append("vampire")
 
 
 func _on_DmgButton_pressed():

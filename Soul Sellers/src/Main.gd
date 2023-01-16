@@ -1,8 +1,25 @@
 extends Node2D
 
+const SLIMESPAWNER = preload("res://src/SlimeSpawner.tscn")
+const GHOSTSPAWNER = preload("res://src/GhostSpawner.tscn")
+const ZOMBIESPAWNER = preload("res://src/ZombieSpawner.tscn")
+const VAMPIRESPAWNER = preload("res://src/VampireSpawner.tscn")
+const REAPERSPAWNER = preload("res://src/ReaperEnemySpawner.tscn")
+
+var spawners = {"slime": SLIMESPAWNER, "ghost": GHOSTSPAWNER, "zombie": ZOMBIESPAWNER,
+		"vampire": VAMPIRESPAWNER, "reaper": REAPERSPAWNER}
 
 func _ready():
 	Global.set_last_num()
+	instance_spawner(spawners[Global.left_spawner], $YSort/Spawner1.global_position)
+	instance_spawner(spawners[Global.middle_spawner], $YSort/Spawner2.global_position)
+	instance_spawner(spawners[Global.right_spawner], $YSort/Spawner3.global_position)
+
+
+func instance_spawner(SPAWNER, pos: Vector2):
+	var spawner = SPAWNER.instance()
+	spawner.global_position = pos
+	$YSort.add_child(spawner)
 
 
 func _on_GameUI_increase_spawn_rate():

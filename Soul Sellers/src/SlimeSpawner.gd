@@ -2,21 +2,25 @@ extends Node2D
 
 const SLIME = preload("res://src/Slime.tscn")
 
-var spawn_rate = 3.5
+const INITSPAWNRATE = 3.5
+const NIGHTSPAWNRATE = 2.0
+const MAXSPAWNRATE = 1.0
+const INCREASERATE = (INITSPAWNRATE - NIGHTSPAWNRATE) / 6.0
+
+var spawn_rate = INITSPAWNRATE
 var nightmode = false
 var maxspawn = false
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	if Global.grave_unlock_flag:
-		spawn_rate = 6.5
 	rng.randomize()
+	$SpawnRate.start(rng.randf_range(MAXSPAWNRATE, INITSPAWNRATE))
 
 
 func increase_spawn_rate():
-	if spawn_rate > 1:
-		spawn_rate -= 0.5
+	if spawn_rate > NIGHTSPAWNRATE:
+		spawn_rate -= INCREASERATE
 
 
 func night_mode():
@@ -32,15 +36,9 @@ func spawn():
 	slime.global_position = global_position
 	get_parent().add_child(slime)
 	if maxspawn:
-		if Global.grave_unlock_flag:
-			$SpawnRate.start(3)
-		else:
-			$SpawnRate.start(1)
+		$SpawnRate.start(MAXSPAWNRATE)
 	elif nightmode:
-		if Global.grave_unlock_flag:
-			$SpawnRate.start(5)
-		else:
-			$SpawnRate.start(3)
+		$SpawnRate.start(NIGHTSPAWNRATE)
 	else:
 		$SpawnRate.start(rng.randf_range(spawn_rate - 1, spawn_rate + 3))
 

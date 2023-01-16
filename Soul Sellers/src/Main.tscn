@@ -1,18 +1,13 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/Repear.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GameUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/SlimeSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Main.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Arena.png" type="Texture" id=5]
 [ext_resource path="res://Sound/crayon_thriller_v2.ogg" type="AudioStream" id=6]
-[ext_resource path="res://src/GhostSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Gate.png" type="Texture" id=8]
 [ext_resource path="res://Sound/night_clock.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Exit Button Prompt.png" type="Texture" id=10]
-[ext_resource path="res://src/VampireSpawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/ZombieSpawner.tscn" type="PackedScene" id=12]
-[ext_resource path="res://src/ReaperEnemySpawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Afterlife Crisis Ver2.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://src/Pause Menu.gd" type="Script" id=15]
 
@@ -334,20 +329,14 @@ disabled = true
 [node name="Repear" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 602, 402 )
 
-[node name="SlimeSpawner" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 236.865, 303.297 )
+[node name="Spawner1" type="Position2D" parent="YSort"]
+position = Vector2( 250, 350 )
 
-[node name="GhostSpawner" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 611, 190 )
+[node name="Spawner2" type="Position2D" parent="YSort"]
+position = Vector2( 600, 200 )
 
-[node name="ZombieSpawner" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( 955.649, 321.054 )
-
-[node name="VampireSpawner" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 360.924, 537.381 )
-
-[node name="ReaperSpawner" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 822.336, 543.327 )
+[node name="Spawner3" type="Position2D" parent="YSort"]
+position = Vector2( 950, 350 )
 
 [node name="TimeUp" type="Control" parent="."]
 pause_mode = 2

@@ -2,21 +2,25 @@ extends Node2D
 
 const VAMPIRE = preload("res://src/Vampire.tscn")
 
-var spawn_rate = 18.0
+const INITSPAWNRATE = 18.0
+const NIGHTSPAWNRATE = 10.0
+const MAXSPAWNRATE = 7.0
+const INCREASERATE = (INITSPAWNRATE - NIGHTSPAWNRATE) / 6.0
+
+var spawn_rate = INITSPAWNRATE
 var nightmode = false
 var maxspawn = false
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	if !Global.coffin_unlock_flag:
-		visible = false
 	rng.randomize()
+	$SpawnRate.start(rng.randf_range(MAXSPAWNRATE, INITSPAWNRATE))
 
 
 func increase_spawn_rate():
-	if spawn_rate > 1:
-		spawn_rate -= 0.5
+	if spawn_rate > NIGHTSPAWNRATE:
+		spawn_rate -= INCREASERATE
 
 
 func night_mode():
@@ -32,14 +36,12 @@ func spawn():
 	vampire.global_position = global_position
 	get_parent().add_child(vampire)
 	if maxspawn:
-		$SpawnRate.start(6)
+		$SpawnRate.start(MAXSPAWNRATE)
 	elif nightmode:
-		$SpawnRate.start(10)
+		$SpawnRate.start(NIGHTSPAWNRATE)
 	else:
 		$SpawnRate.start(rng.randf_range(spawn_rate - 1, spawn_rate + 3))
 
 
 func _on_SpawnRate_timeout():
-	if !Global.coffin_unlock_flag:
-		return
 	$AnimationPlayer.play("shake")
