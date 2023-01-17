@@ -1,6 +1,7 @@
 extends Node
 
 var alt_controls = false
+var dash_cursor_enabled = false
 
 var grave_unlock_flag = false
 var void_unlock_flag = false

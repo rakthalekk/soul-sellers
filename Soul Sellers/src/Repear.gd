@@ -28,6 +28,11 @@ func _ready():
 		BASEDMG = 5.0
 		BIGDMG = 8.0
 		dmg = BASEDMG
+	
+	if Global.dash_cursor_enabled:
+		$DashIndicator.hide()
+	else:
+		$CursorControl/DashCursor.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -222,6 +227,7 @@ func _on_Scythe_body_entered(body):
 
 func _on_ActionCooldown_timeout():
 	$CursorControl/DashCursor.modulate = Color(1, 1, 1, 1)
+	$DashIndicator.modulate = Color(1, 1, 1, 1)
 
 
 func _on_AttackCharge_timeout():

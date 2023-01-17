@@ -201,6 +201,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("DashIndicator:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "dash"
@@ -267,6 +279,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.956863, 0.384314, 0.384314, 1 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("DashIndicator:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.956863, 0.384314, 0.384314, 1 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "dash_back"
@@ -328,6 +352,18 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.956863, 0.384314, 0.384314, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DashIndicator:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -1057,6 +1093,11 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
 hframes = 12
 
+[node name="DashIndicator" type="Sprite" parent="."]
+position = Vector2( 0, -70 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
 [node name="Scythe" type="Area2D" parent="."]
 position = Vector2( 0, 10 )
 collision_layer = 0
@@ -1065,6 +1106,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scythe"]
 position = Vector2( 48.5, 2 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="Scythe"]
 visible = false

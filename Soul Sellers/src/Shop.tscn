@@ -94,8 +94,8 @@ margin_left = -101.0
 margin_top = 20.0
 margin_right = 104.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,7 +104,6 @@ __meta__ = {
 [node name="DialogueNextIndicator" type="AnimatedSprite" parent="SpeechBubble"]
 position = Vector2( 108.261, 45.3997 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
@@ -149,8 +148,8 @@ margin_left = -49.7438
 margin_top = 4.64475
 margin_right = -41.7438
 margin_bottom = 12.6448
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "4"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,8 +160,8 @@ margin_left = -24.2726
 margin_top = 5.09424
 margin_right = -16.2726
 margin_bottom = 13.0942
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "9"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -173,8 +172,8 @@ margin_left = -0.449493
 margin_top = 5.09424
 margin_right = 14.5505
 margin_bottom = 13.0942
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "15"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,8 +184,8 @@ margin_left = 24.4224
 margin_top = 5.24407
 margin_right = 39.4224
 margin_bottom = 13.2441
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "30"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -197,8 +196,8 @@ margin_left = 49.2943
 margin_top = 5.09424
 margin_right = 65.2943
 margin_bottom = 13.0942
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "50"
 __meta__ = {
 "_edit_use_anchors_": false
