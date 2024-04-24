@@ -16,6 +16,9 @@ var player : Repear
 var hp = HPMAX
 var knockback = false
 
+var search_timer = 0
+var search_max = 0.1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("Repear")
@@ -34,11 +37,29 @@ func _process(delta):
 	if hp <= 0:
 		create_soul()
 		queue_free()
+	
+	search_timer += delta
+	if search_timer > search_max:
+		update_targeted_player()
+		search_timer = 0
 
 
 # Overridden by specific enemy
 func hurt_sound():
 	pass
+
+
+func update_targeted_player():
+	var reaper1 = get_parent().get_node("Repear")
+	if !Global.multiplayer_joycons:
+		return reaper1
+	
+	var reaper2 = get_parent().get_node("Repear2")
+	
+	if position.distance_to(reaper1.position) < position.distance_to(reaper2.position):
+		player = reaper1
+	else:
+		player = reaper2
 
 
 func flip_sprite():

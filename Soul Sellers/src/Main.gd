@@ -6,6 +6,8 @@ const ZOMBIESPAWNER = preload("res://src/ZombieSpawner.tscn")
 const VAMPIRESPAWNER = preload("res://src/VampireSpawner.tscn")
 const REAPERSPAWNER = preload("res://src/ReaperEnemySpawner.tscn")
 
+const REAPER = preload("res://src/Repear.tscn")
+
 var spawners = {"slime": SLIMESPAWNER, "ghost": GHOSTSPAWNER, "zombie": ZOMBIESPAWNER,
 		"vampire": VAMPIRESPAWNER, "reaper": REAPERSPAWNER}
 
@@ -14,6 +16,18 @@ func _ready():
 	instance_spawner(spawners[Global.left_spawner], $YSort/Spawner1.global_position)
 	instance_spawner(spawners[Global.middle_spawner], $YSort/Spawner2.global_position)
 	instance_spawner(spawners[Global.right_spawner], $YSort/Spawner3.global_position)
+	
+	if Global.multiplayer_joycons:
+		$YSort/Repear.position = Vector2(500, 402)
+		var reaper2 = REAPER.instance()
+		reaper2.position = Vector2(704, 402)
+		reaper2.player_num = 2
+		reaper2.name = "Repear2"
+		$YSort.add_child(reaper2)
+
+
+func update_souls():
+	$GameUI._on_Repear_update_souls()
 
 
 func instance_spawner(SPAWNER, pos: Vector2):

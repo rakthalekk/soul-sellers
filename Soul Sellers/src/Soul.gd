@@ -11,7 +11,17 @@ var direction = Vector2.ZERO
 var player : Repear
 
 func _ready():
-	player = get_parent().get_node("Repear")
+	var reaper1 = get_parent().get_node("Repear")
+	if !Global.multiplayer_joycons:
+		return reaper1
+	
+	var reaper2 = get_parent().get_node("Repear2")
+	
+	if position.distance_to(reaper1.position) < position.distance_to(reaper2.position):
+		player = reaper1
+	else:
+		player = reaper2
+
 
 func _process(delta):
 	if !Global.homing_souls_unlock_flag:

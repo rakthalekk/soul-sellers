@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_PlayButton_pressed():
-	get_tree().change_scene("res://src/Shop.tscn")
+	get_tree().change_scene("res://src/ChooseMode.tscn")
 
 
 func _on_QuitButton_pressed():

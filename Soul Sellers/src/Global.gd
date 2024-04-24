@@ -3,6 +3,8 @@ extends Node
 var alt_controls = true
 var dash_cursor_enabled = false
 
+var multiplayer_joycons = true
+
 var grave_unlock_flag = false
 var void_unlock_flag = false
 var dmg_up_flag = false

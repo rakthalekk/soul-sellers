@@ -20,6 +20,9 @@ var action = false
 var hp = HPMAX
 var dmg = BASEDMG
 
+var player_num = 1
+var prefix = ""
+
 onready var anim_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -33,13 +36,21 @@ func _ready():
 		$DashIndicator.hide()
 	else:
 		$CursorControl/DashCursor.hide()
+	
+	if Global.multiplayer_joycons:
+		prefix = "p" + str(player_num) + "_"
+	
+	if player_num == 2:
+		$Sprite.texture = load("res://assets/p2_reaper.png")
+		$ScytheSprite.texture = load("res://assets/p2_scythe.png")
+		$HealthBar.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !["dash", "dash_back"].has(anim_player.current_animation):
-		direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-		direction.y = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
+		direction.x = Input.get_action_strength(prefix + "move_right") - Input.get_action_strength(prefix + "move_left")
+		direction.y = Input.get_action_strength(prefix + "move_backward") - Input.get_action_strength(prefix + "move_forward")
 		direction = direction.normalized()
 		velocity = direction * SPEED
 	else:
@@ -50,8 +61,9 @@ func _process(delta):
 		$CursorControl.look_at(get_global_mouse_position())
 	else:
 		var dir = Vector2.ZERO
-		dir.x = Input.get_action_strength("attack_right") - Input.get_action_strength("attack_left")
-		dir.y = Input.get_action_strength("attack_down") - Input.get_action_strength("attack_up")
+		dir.x = Input.get_action_strength(prefix + "attack_right") - Input.get_action_strength(prefix + "attack_left")
+		dir.y = Input.get_action_strength(prefix + "attack_down") - Input.get_action_strength(prefix + "attack_up")
+		
 		dir.normalized()
 		if dir.length() != 0:
 			$Scythe.look_at(global_position + dir * 500)
@@ -81,43 +93,43 @@ func _process(delta):
 			$ScytheSprite.flip_h = false
 		
 	if !Global.alt_controls:
-		if Input.is_action_just_pressed("attack") && $AttackCooldown.time_left == 0:
+		if Input.is_action_just_pressed(prefix + "attack") && $AttackCooldown.time_left == 0:
 			dmg = BASEDMG
 			play_attack_anim("attack")
 			$AttackSound.play()
 		
-		if Input.is_action_just_released("attack") && $AttackCooldown.time_left == 0:
+		if Input.is_action_just_released(prefix + "attack") && $AttackCooldown.time_left == 0:
 			if $AttackCharge.time_left == 0:
 				dmg = BIGDMG
 				play_attack_anim("big_attack")
 				$BigAttackSound.play()
 	else:
-		var any_key_held = (Input.is_action_pressed("attack_up") || Input.is_action_pressed("attack_down") ||
-				Input.is_action_pressed("attack_left") || Input.is_action_pressed("attack_right"))
-		var non_up_held = (Input.is_action_pressed("attack_down") || Input.is_action_pressed("attack_left")
-				|| Input.is_action_pressed("attack_right"))
-		var non_down_held = (Input.is_action_pressed("attack_up") || Input.is_action_pressed("attack_left")
-				|| Input.is_action_pressed("attack_right"))
-		var non_left_held = (Input.is_action_pressed("attack_up") || Input.is_action_pressed("attack_down")
-				|| Input.is_action_pressed("attack_right"))
-		var non_right_held = (Input.is_action_pressed("attack_down") || Input.is_action_pressed("attack_left")
-				|| Input.is_action_pressed("attack_up"))
+		var any_key_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down") ||
+				Input.is_action_pressed(prefix + "attack_left") || Input.is_action_pressed(prefix + "attack_right"))
+		var non_up_held = (Input.is_action_pressed(prefix + "attack_down") || Input.is_action_pressed(prefix + "attack_left")
+				|| Input.is_action_pressed(prefix + "attack_right"))
+		var non_down_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_left")
+				|| Input.is_action_pressed(prefix + "attack_right"))
+		var non_left_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down")
+				|| Input.is_action_pressed(prefix + "attack_right"))
+		var non_right_held = (Input.is_action_pressed(prefix + "attack_down") || Input.is_action_pressed(prefix + "attack_left")
+				|| Input.is_action_pressed(prefix + "attack_up"))
 		
-		if ((Input.is_action_just_pressed("attack_up") && !non_up_held || Input.is_action_just_pressed("attack_down") && !non_down_held ||
-				Input.is_action_just_pressed("attack_left") && !non_left_held || Input.is_action_just_pressed("attack_right") && !non_right_held)
+		if ((Input.is_action_just_pressed(prefix + "attack_up") && !non_up_held || Input.is_action_just_pressed(prefix + "attack_down") && !non_down_held ||
+				Input.is_action_just_pressed(prefix + "attack_left") && !non_left_held || Input.is_action_just_pressed(prefix + "attack_right") && !non_right_held)
 				&& $AttackCooldown.time_left == 0):
 			dmg = BASEDMG
 			play_attack_anim("attack")
 			$AttackSound.play()
 		
-		if ((Input.is_action_just_released("attack_up") || Input.is_action_just_released("attack_down") ||
-				Input.is_action_just_released("attack_left") || Input.is_action_just_released("attack_right"))
+		if ((Input.is_action_just_released(prefix + "attack_up") || Input.is_action_just_released(prefix + "attack_down") ||
+				Input.is_action_just_released(prefix + "attack_left") || Input.is_action_just_released(prefix + "attack_right"))
 				&& $AttackCooldown.time_left == 0 && $AttackCharge.time_left == 0 && !any_key_held):
 			dmg = BIGDMG
 			play_attack_anim("big_attack")
 			$BigAttackSound.play()
 			
-	if Input.is_action_just_pressed("secondary_action") && $ActionCooldown.time_left == 0:
+	if Input.is_action_just_pressed(prefix + "dash") && $ActionCooldown.time_left == 0:
 		if $AttackAnimation.is_playing():
 			$AttackAnimation.play("RESET")
 		
@@ -148,9 +160,13 @@ func _process(delta):
 		velocity = direction * DASHSPEED
 	
 	if hp <= 0:
-		emit_signal("die")
-		$Sprite.modulate = Color(1, 0.2, 0.2)
-		$DieSound.play()
+		if player_num == 1:
+			emit_signal("die")
+			$Sprite.modulate = Color(1, 0.2, 0.2)
+			$DieSound.play()
+		else:
+			position = Vector2(-1000, -1000)
+			
 
 
 func play_attack_anim(anim: String):
@@ -198,6 +214,7 @@ func hurt(dmg: int):
 		hp -= dmg
 		$EffectsAnimation.play("hurt")
 		emit_signal("update_health", hp / HPMAX * 100)
+		$HealthBar.value = hp / HPMAX * 100
 		$HurtSound.play()
 
 
@@ -213,7 +230,7 @@ func give_soul(type: String):
 	elif type == "reaper":
 		Global.reaper_souls += 1
 	
-	emit_signal("update_souls")
+	get_parent().get_parent().update_souls()
 
 
 func play_pickup_sound(sound):
@@ -232,11 +249,11 @@ func _on_ActionCooldown_timeout():
 
 func _on_AttackCharge_timeout():
 	if !Global.alt_controls:
-		if Input.is_action_pressed("attack"):
+		if Input.is_action_pressed(prefix + "attack"):
 			$ChargeAttack.play()
 			$ScytheAnimation.play("flash")
 	else:
-		if (Input.is_action_pressed("attack_up") || Input.is_action_pressed("attack_down") ||
-				Input.is_action_pressed("attack_left") || Input.is_action_pressed("attack_right")):
+		if (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down") ||
+				Input.is_action_pressed(prefix + "attack_left") || Input.is_action_pressed(prefix + "attack_right")):
 			$ChargeAttack.play()
 			$ScytheAnimation.play("flash")
