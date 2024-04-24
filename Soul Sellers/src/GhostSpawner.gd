@@ -21,6 +21,8 @@ func _ready():
 func increase_spawn_rate():
 	if spawn_rate > NIGHTSPAWNRATE:
 		spawn_rate -= INCREASERATE
+		if Global.multiplayer_joycons:
+			spawn_rate -= INCREASERATE
 
 
 func night_mode():
