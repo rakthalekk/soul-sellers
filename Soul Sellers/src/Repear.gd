@@ -23,6 +23,9 @@ var dmg = BASEDMG
 var player_num = 1
 var prefix = ""
 
+export(Texture) var player2_sprite
+export(Texture) var player2_scythe
+
 onready var anim_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -41,8 +44,8 @@ func _ready():
 		prefix = "p" + str(player_num) + "_"
 	
 	if player_num == 2:
-		$Sprite.texture = load("res://assets/p2_reaper.png")
-		$ScytheSprite.texture = load("res://assets/p2_scythe.png")
+		$Sprite.texture = player2_sprite
+		$ScytheSprite.texture = player2_scythe
 		$HealthBar.show()
 
 
