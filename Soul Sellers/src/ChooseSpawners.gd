@@ -11,6 +11,7 @@ onready var textures = {"slime": SLIME_SPAWNER_TEXTURE, "ghost": GHOST_SPAWNER_T
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Button.grab_focus()
 	update_spawners()
 
 

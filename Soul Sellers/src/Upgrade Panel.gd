@@ -25,12 +25,13 @@ func _ready():
 	if Global.void_unlock_flag:
 		$UpgradeCosts/Coin5.visible = false
 	
+	$"Quest Button".focus_neighbour_left = NodePath("../../ArenaButton")
+	
 	update_soul_counts()
 
 func _process(delta):
-	if Input.is_action_just_pressed("attack") and its_dialogue_time:
-		its_dialogue_time = false
-		animationPlayer.play_backwards("move_offscreen")
+	if (Input.is_action_just_pressed("attack") || Input.is_action_just_pressed("ui_accept")) and its_dialogue_time:
+		animationPlayer.play("move_onscreen")
 		update_soul_counts()
 		emit_signal("questing_done")
 
@@ -55,10 +56,16 @@ func sell_souls():
 	Global.reaper_souls = 0
 	update_soul_counts()
 
+
+func let_it_be_dialoging_time_once_again():
+	its_dialogue_time = false
+
+
 func _on_Quest_Button_pressed():
-	animationPlayer.play("move_offscreen")
-	emit_signal("start_quest")
-	its_dialogue_time = true
+	if !its_dialogue_time:
+		animationPlayer.play("move_offscreen")
+		emit_signal("start_quest")
+		its_dialogue_time = true
 
 func _on_Sell_Button_pressed():
 	sell_souls()

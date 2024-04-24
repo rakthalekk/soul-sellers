@@ -12,6 +12,10 @@ var dialogue_count = 0
 func _ready():
 	if Global.first_time_shop:
 		first_time_shop_procedure()
+	else:
+		$ArenaButton.focus_neighbour_right = NodePath("../Upgrade Panel/Quest Button")
+	
+	$ArenaButton.grab_focus()
 
 func _on_Upgrade_Panel_start_quest():
 	speechBubbleTimer.paused = false

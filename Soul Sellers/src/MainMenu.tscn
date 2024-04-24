@@ -32,6 +32,8 @@ margin_bottom = -257.0
 rect_scale = Vector2( 2.5, 2.5 )
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
 
 [node name="QuitButton" type="TextureButton" parent="."]
 anchor_left = 0.5
@@ -45,6 +47,8 @@ margin_bottom = -117.0
 rect_scale = Vector2( 2.5, 2.5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

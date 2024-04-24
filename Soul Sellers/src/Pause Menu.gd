@@ -7,6 +7,7 @@ func _process(delta):
 
 
 func input_pause():
+	$ResumeButton.grab_focus()
 	if !get_tree().paused:
 		show()
 		get_tree().paused = true

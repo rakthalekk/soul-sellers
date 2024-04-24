@@ -80,9 +80,6 @@ margin_right = 480.0
 margin_bottom = 270.0
 texture = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SpeechBubble" type="Sprite" parent="."]
 visible = false
@@ -104,6 +101,7 @@ __meta__ = {
 [node name="DialogueNextIndicator" type="AnimatedSprite" parent="SpeechBubble"]
 position = Vector2( 108.261, 45.3997 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Upgrade Panel" parent="." instance=ExtResource( 5 )]
@@ -123,9 +121,8 @@ margin_right = 68.9388
 margin_bottom = 84.7759
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_hover = ExtResource( 10 )
+texture_focused = ExtResource( 10 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -151,9 +148,6 @@ margin_bottom = 12.6448
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "4"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="Exchange Rate"]
 margin_left = -24.2726
