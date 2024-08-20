@@ -17,9 +17,6 @@ var unlocked_spawners = ["slime", "ghost"]
 var left_spawner = "slime"
 var middle_spawner = "ghost"
 var right_spawner = "slime"
-#var left_spawner = "reaper"
-#var middle_spawner = "reaper"
-#var right_spawner = "reaper"
 
 var first_time_shop = true
 var quest_1_complete = false

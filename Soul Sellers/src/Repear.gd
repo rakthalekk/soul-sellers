@@ -63,13 +63,8 @@ func _process(delta):
 		$Scythe.look_at(get_global_mouse_position())
 		$CursorControl.look_at(get_global_mouse_position())
 	else:
-		var dir = Vector2.ZERO
-		dir.x = Input.get_action_strength(prefix + "attack_right") - Input.get_action_strength(prefix + "attack_left")
-		dir.y = Input.get_action_strength(prefix + "attack_down") - Input.get_action_strength(prefix + "attack_up")
-		
-		dir.normalized()
-		if dir.length() != 0:
-			$Scythe.look_at(global_position + dir * 500)
+		if direction.length() != 0:
+			$Scythe.look_at(global_position + direction * 500)
 		
 		if direction.length() != 0:
 			$CursorControl.look_at(global_position + direction * 500)
@@ -107,30 +102,40 @@ func _process(delta):
 				play_attack_anim("big_attack")
 				$BigAttackSound.play()
 	else:
-		var any_key_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down") ||
-				Input.is_action_pressed(prefix + "attack_left") || Input.is_action_pressed(prefix + "attack_right"))
-		var non_up_held = (Input.is_action_pressed(prefix + "attack_down") || Input.is_action_pressed(prefix + "attack_left")
-				|| Input.is_action_pressed(prefix + "attack_right"))
-		var non_down_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_left")
-				|| Input.is_action_pressed(prefix + "attack_right"))
-		var non_left_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down")
-				|| Input.is_action_pressed(prefix + "attack_right"))
-		var non_right_held = (Input.is_action_pressed(prefix + "attack_down") || Input.is_action_pressed(prefix + "attack_left")
-				|| Input.is_action_pressed(prefix + "attack_up"))
-		
-		if ((Input.is_action_just_pressed(prefix + "attack_up") && !non_up_held || Input.is_action_just_pressed(prefix + "attack_down") && !non_down_held ||
-				Input.is_action_just_pressed(prefix + "attack_left") && !non_left_held || Input.is_action_just_pressed(prefix + "attack_right") && !non_right_held)
-				&& $AttackCooldown.time_left == 0):
+		if Input.is_action_just_pressed(prefix + "attack") && $AttackCooldown.time_left == 0:
 			dmg = BASEDMG
 			play_attack_anim("attack")
 			$AttackSound.play()
 		
-		if ((Input.is_action_just_released(prefix + "attack_up") || Input.is_action_just_released(prefix + "attack_down") ||
-				Input.is_action_just_released(prefix + "attack_left") || Input.is_action_just_released(prefix + "attack_right"))
-				&& $AttackCooldown.time_left == 0 && $AttackCharge.time_left == 0 && !any_key_held):
-			dmg = BIGDMG
-			play_attack_anim("big_attack")
-			$BigAttackSound.play()
+		if Input.is_action_just_released(prefix + "attack") && $AttackCooldown.time_left == 0:
+			if $AttackCharge.time_left == 0:
+				dmg = BIGDMG
+				play_attack_anim("big_attack")
+				$BigAttackSound.play()
+#		var any_key_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down") ||
+#				Input.is_action_pressed(prefix + "attack_left") || Input.is_action_pressed(prefix + "attack_right"))
+#		var non_up_held = (Input.is_action_pressed(prefix + "attack_down") || Input.is_action_pressed(prefix + "attack_left")
+#				|| Input.is_action_pressed(prefix + "attack_right"))
+#		var non_down_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_left")
+#				|| Input.is_action_pressed(prefix + "attack_right"))
+#		var non_left_held = (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down")
+#				|| Input.is_action_pressed(prefix + "attack_right"))
+#		var non_right_held = (Input.is_action_pressed(prefix + "attack_down") || Input.is_action_pressed(prefix + "attack_left")
+#				|| Input.is_action_pressed(prefix + "attack_up"))
+#
+#		if ((Input.is_action_just_pressed(prefix + "attack_up") && !non_up_held || Input.is_action_just_pressed(prefix + "attack_down") && !non_down_held ||
+#				Input.is_action_just_pressed(prefix + "attack_left") && !non_left_held || Input.is_action_just_pressed(prefix + "attack_right") && !non_right_held)
+#				&& $AttackCooldown.time_left == 0):
+#			dmg = BASEDMG
+#			play_attack_anim("attack")
+#			$AttackSound.play()
+#
+#		if ((Input.is_action_just_released(prefix + "attack_up") || Input.is_action_just_released(prefix + "attack_down") ||
+#				Input.is_action_just_released(prefix + "attack_left") || Input.is_action_just_released(prefix + "attack_right"))
+#				&& $AttackCooldown.time_left == 0 && $AttackCharge.time_left == 0 && !any_key_held):
+#			dmg = BIGDMG
+#			play_attack_anim("big_attack")
+#			$BigAttackSound.play()
 			
 	if Input.is_action_just_pressed(prefix + "dash") && $ActionCooldown.time_left == 0:
 		if $AttackAnimation.is_playing():
@@ -257,6 +262,7 @@ func _on_AttackCharge_timeout():
 			$ScytheAnimation.play("flash")
 	else:
 		if (Input.is_action_pressed(prefix + "attack_up") || Input.is_action_pressed(prefix + "attack_down") ||
-				Input.is_action_pressed(prefix + "attack_left") || Input.is_action_pressed(prefix + "attack_right")):
+				Input.is_action_pressed(prefix + "attack_left") || Input.is_action_pressed(prefix + "attack_right")) || \
+				Input.is_action_pressed(prefix + "attack"):
 			$ChargeAttack.play()
 			$ScytheAnimation.play("flash")

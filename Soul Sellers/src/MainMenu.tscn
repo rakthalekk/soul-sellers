@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/UI/TItle_Screen_Switch.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/TItle_Screen.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/play-button-unpressed.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/play-button-pressed.png" type="Texture" id=3]
 [ext_resource path="res://Assets/UI/quit-button-unpressed.png" type="Texture" id=4]

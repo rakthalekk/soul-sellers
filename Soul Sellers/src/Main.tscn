@@ -372,6 +372,7 @@ visible = false
 position = Vector2( 600, 26 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="Pause Menu" type="Control" parent="."]
