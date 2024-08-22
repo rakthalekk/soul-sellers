@@ -40,6 +40,11 @@ var last_vampire_num = 0
 var last_reaper_num = 0
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+
+
 func set_last_num():
 	last_slime_num = slime_souls
 	last_ghost_num = ghost_souls
